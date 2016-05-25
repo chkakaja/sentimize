@@ -1,4 +1,4 @@
-# Project Name
+# Chamandris
 
 > Pithy project description
 
