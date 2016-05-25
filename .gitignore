@@ -9,4 +9,5 @@ npm-debug.log
 client/compiled/
 
 # Environment Configuration, API Keys
-env/
+env/env-config.js
+env/google-oauth-2.0.js

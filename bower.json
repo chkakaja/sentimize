@@ -1,0 +1,19 @@
+{
+  "name": "greenfield-project",
+  "version": "1.0.0",
+  "authors": [
+    "jackrzhang <15jzhang@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "pure": "^0.6.0"
+  }
+}
