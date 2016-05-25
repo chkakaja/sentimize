@@ -1,12 +1,12 @@
 # Sentimize
 
-> Pithy project description
+> Get a sentiment analysis when you video conference (need to sync with press release doc later).
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Chris Haug
+  - __Scrum Master__: Jack Zhang
+  - __Development Team Members__: Chris Haug, Jack Zhang, Kani Munidasa, Kat Hao
 
 ## Table of Contents
 
