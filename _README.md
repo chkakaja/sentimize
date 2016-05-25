@@ -1,4 +1,4 @@
-# Chamandris
+# Sentimize
 
 > Pithy project description
 
