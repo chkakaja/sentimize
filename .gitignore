@@ -1,0 +1,12 @@
+# Node/Bower Dependency Management
+node_modules/
+client/bower
+
+# Logs
+npm-debug.log
+
+# Client Side Babel Compiled Files
+client/compiled/
+
+# Environment Configuration, API Keys
+env/
