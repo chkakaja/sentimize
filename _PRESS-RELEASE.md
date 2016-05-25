@@ -1,4 +1,4 @@
-# Project Name #
+# Sentimize #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -17,28 +17,37 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Analyze video to show people's emotions.
+  Name the product in a way the reader (i.e. your target customers) will understand.
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  > Learn more about the person you are video chatting.
+  Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  > Video chatting platform for you and your friends. Sentimize will show you data on how your friend's are feeling during your video chat.  
+  Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > No access or record to analyze the video chat. 
+  Describe the problem your product solves.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > Show and save data on video chats on people's emotions.
+  Describe how your product elegantly solves the problem.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > Sentimize allows you to gain more information about whoever you video chat with.  
+  A quote from a spokesperson in your company.
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > ??
+  Describe how easy it is to get started.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > Sentimize helped my company improve teamwork and communication.
+  Provide a quote from a hypothetical customer that describes how they experienced the benefit.
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  > ?? 
+  Wrap it up and give pointers where the reader should go next.
