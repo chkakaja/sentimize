@@ -15,10 +15,13 @@
   "dependencies": {
     "bluebird": "^3.4.0",
     "body-parser": "^1.15.1",
+    "bookshelf": "^0.9.5",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "jade": "^1.11.0",
+    "knex": "^0.11.5",
     "morgan": "^1.7.0",
+    "mysql": "^2.10.2",
     "passport": "^0.3.2"
   },
   "devDependencies": {
