@@ -9,15 +9,16 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "nodemon server/server.js"
   },
   "dependencies": {
     "bluebird": "^3.4.0",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
+    "jade": "^1.11.0",
     "morgan": "^1.7.0",
-    "passport": "^0.3.2",
+    "passport": "^0.3.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",
