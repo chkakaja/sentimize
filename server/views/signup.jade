@@ -1,7 +1,9 @@
 extends ./layout
 
-block content 
-	form(method='POST' action='/api/user')
-		input(type='text' name='username')
-		input(type='password' name='password')
-	button Submit
+
+block content
+  div Test
+  form(method='POST', action='/api/user')
+    input(type='text', name='username')
+    input(type='password', name='password')
+    button Signup
