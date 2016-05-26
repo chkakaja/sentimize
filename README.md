@@ -24,11 +24,14 @@
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node
+- Express
+- Jade
+- OAuth Google
+- React Redux
+- MySQL
+- ORM - BookShelf/Knex
+- FaceScope API
 
 ## Development
 
