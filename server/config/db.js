@@ -1,4 +1,4 @@
-var env = require('./../../env');
+var env = require('./../../env/env-config.js');
 
 var knex = require('knex')({
   client: 'mysql',
