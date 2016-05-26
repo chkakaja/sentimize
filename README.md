@@ -32,6 +32,7 @@
 - MySQL
 - ORM - BookShelf/Knex
 - FaceScope API
+- Babel
 
 ## Development
 
