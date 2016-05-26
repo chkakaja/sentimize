@@ -1,5 +1,6 @@
 var morgan = require('morgan');
 var jade = require('jade').__express;
+var db = require('./db');
 
 
 module.exports = function(app, express) {
