@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)](https://waffle.io/chkakaja/sentimize)
 # Sentimize
 
 > Get a sentiment analysis when you video conference (need to sync with press release doc later).
