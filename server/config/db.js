@@ -1,17 +1,28 @@
 var env = require('./../../env/env-config.js');
 
-var knex = require('knex')({
+var connection = {
   client: 'mysql',
   connection: {
-    host: '127.0.0.1',
+    host: env.HOST,
     user: env.DB_USER,
     password: env.DB_PASSWORD,
-    database: 'sentimize',
     charset: 'utf8'
   }
-});
+};
 
-var db = require('bookshelf')(knex);
+var knex = require('knex')(connection);
 
-module.exports = db;
+knex.raw('CREATE DATABASE IF NOT EXISTS ' + env.APP_NAME)
+  .then(function(){
+    knex.destroy();
+    connection.database = env.APP_NAME;
 
+    knex = require('knex')(connection);
+  })
+  .then(function() {
+    var db = require('bookshelf')(knex);
+    module.exports = db;
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
