@@ -9,7 +9,8 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "nodemon server/server.js",
+    "babel": "babel client/ --out-dir client/compiled --presets=es2015,react --ignore=client/compiled,client/bower,env,node_modules,server,test --source-maps inline --watch"
   },
   "dependencies": {
     "bluebird": "^3.4.0",
@@ -21,6 +22,9 @@
     "passport": "^0.3.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
     "chai": "^3.5.0",
     "mocha": "^2.5.0"
   },
