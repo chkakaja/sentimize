@@ -1,9 +1,16 @@
 extends ./layout
 
+block head-scripts
+  script(src='bower/react/react.js')
+  script(src='bower/react/react-dom.min.js')
+  script(src='bower/react/react-with-addons.min.js')
+
 block styles
   link(rel='stylesheet', href='style/index.css')
 
 block content
-  div.index Index Content Here.
+  div.root
 
-  
+block body-scripts
+  script(src='compiled/components/App.js')
+  script(src='compiled/index.js')
