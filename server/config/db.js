@@ -6,7 +6,7 @@ var knex = require('knex')({
     host: '127.0.0.1',
     user: env.DB_USER,
     password: env.DB_PASSWORD,
-    database: 'sentimze_db',
+    database: 'sentimize',
     charset: 'utf8'
   }
 });
