@@ -21,6 +21,7 @@ module.exports = function(app, passport) {
         return new User(userObj).save();
       }
     }).then(function(newUser) {
+      console.log("NEW USER", newUser);
       res.status(302).redirect('/');
     })
     .catch(function(err) {

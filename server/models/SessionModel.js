@@ -2,8 +2,6 @@ var db = require('../config/db');
 var User = require('./UserModel');
 var Snapshot = require('./SnapshotModel');
 
-console.log('db', db);
-
 db.knex.schema.hasTable('sessions').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('sessions', function(session) {

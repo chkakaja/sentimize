@@ -4,6 +4,7 @@ var connection = {
   client: 'mysql',
   connection: {
     host: env.HOST,
+    database: env.APP_NAME,
     user: env.DB_USER,
     password: env.DB_PASSWORD,
     charset: 'utf8'
@@ -12,22 +13,6 @@ var connection = {
 
 var knex = require('knex')(connection);
 
-console.log('in db.js before raw');
-
-knex.raw('CREATE DATABASE IF NOT EXISTS ' + env.APP_NAME)
-  .then(function(){
-    console.log('destroy connection');
-    knex.destroy();
-    connection.database = env.APP_NAME;
-
-    knex = require('knex')(connection);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
-
+connection.database = env.APP_NAME;
 var db = require('bookshelf')(knex);
-console.log('db in db', db);
 module.exports = db;
-
-console.log('in db.js after raw');
