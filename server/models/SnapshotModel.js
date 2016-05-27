@@ -1,4 +1,6 @@
-var db = require('./config/db.js')
+var db = require('./config/db.js');
+var User = require('./UserModel.js');
+var Session = require('./SessionModel.js');
 
 db.knex.schema.hasTable('snapshots').then(function(exists){
   if(!exists) {
@@ -15,14 +17,8 @@ db.knex.schema.hasTable('snapshots').then(function(exists){
       snapshot.integer('suprise');
       snapshot.integer('fear');
       snapshot.integer('happiness');
-      snapshot.string('user_id')
-        .unsigned()
-        .references('id')
-        .inTable('ssers');
-      snapshot.string('session_id')
-        .unsigned()
-        .references('id')
-        .inTable('sessions');
+      snapshot.integer('userId');
+      snapshot.integer('sessionId');
     }).then(function(){
       console.log("Snapshots table created")
     })
@@ -32,6 +28,12 @@ db.knex.schema.hasTable('snapshots').then(function(exists){
 var Snapshot = db.Model.extend({
   tableName: 'snapshots',
   hasTimestamps: true,
+  user: function() {
+    return this.belongsTo(User, 'userId');
+  },
+  session: function() {
+    return this.belongsTo(Session, 'sessionId');
+  },
 })
 
 module.exports(Snapshot)
