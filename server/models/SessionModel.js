@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require('../config/db.js');
 var User = require('./UserModel.js');
 var Snapshot = require('./SnapshotModel.js');
 

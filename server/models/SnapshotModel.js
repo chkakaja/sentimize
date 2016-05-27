@@ -1,4 +1,4 @@
-var db = require('./config/db.js');
+var db = require('../config/db.js');
 var User = require('./UserModel.js');
 var Session = require('./SessionModel.js');
 
