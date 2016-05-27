@@ -1,4 +1,4 @@
-module.exports = function(app, express) {
+module.exports = function(app, passport) {
   // Pre-authentication routes
   app.get('/login',
   function(req, res) {
@@ -25,7 +25,7 @@ module.exports = function(app, express) {
     })
     .catch(function(err) {
       console.log(err);
-    }) 
+    })
   });
 
   app.get('/signup',
@@ -38,5 +38,5 @@ module.exports = function(app, express) {
     req.logout();
     res.redirect('/login')
   });
-  
+
 };
