@@ -8,7 +8,7 @@ var app = express();
 // Initial Configuration, Static Assets, & View Engine Configuration
 require('./config/initialize.js')(app, express);
 // Authentication Middleware: Express Sessions, Passport Strategy
-// require('./config/auth.js')(app, express, passport);
+require('./config/auth.js')(app, express, passport);
 
 
 // Pre-Authentication Routes & OAuth Requests
