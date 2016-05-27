@@ -1,4 +1,5 @@
 var db = require('./db');
+var Snapshot = require('./SnapshotModel.js');
 
 db.knex.schema.hasTable('users').then(function(exists) {
   if (!exists) {
@@ -20,10 +21,12 @@ db.knex.schema.hasTable('users').then(function(exists) {
 });
 
 var User = db.Model.extend({
-
   tableName: 'users',
   hasTimestamps: true,
-  
+  snapshots: function() {
+    return this.hasMany(Snapshot);
+  },
+
   initialize: function() {
     this.on('creating', this.hashPassword);
   },
