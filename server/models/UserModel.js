@@ -1,4 +1,4 @@
-var db = require('./db');
+var db = require('../config/db.js');
 var Snapshot = require('./SnapshotModel.js');
 
 db.knex.schema.hasTable('users').then(function(exists) {
