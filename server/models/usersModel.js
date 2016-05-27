@@ -8,10 +8,10 @@ db.knex.schema.hasTable('users').then(function(exists) {
       user.string('password', 255);
       user.string('email', 255);
       user.string('gender', 1);
-      user.string('age', 2);
+      user.integer('age');
       user.string('ethnicity', 255);
-      user.string('first-name', 255);
-      user.string('last-name', 255);
+      user.string('firstName', 255);
+      user.string('lastName', 255);
       user.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
