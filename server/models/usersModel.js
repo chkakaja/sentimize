@@ -6,6 +6,12 @@ db.knex.schema.hasTable('users').then(function(exists) {
       user.increments('id').primary();
       user.string('username', 255).unique();
       user.string('password', 255);
+      user.string('email', 255);
+      user.string('gender', 1);
+      user.string('age', 2);
+      user.string('ethnicity', 255);
+      user.string('first-name', 255);
+      user.string('last-name', 255);
       user.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);
