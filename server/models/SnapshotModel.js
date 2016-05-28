@@ -36,4 +36,4 @@ var Snapshot = db.Model.extend({
   },
 })
 
-module.exports(Snapshot)
+module.exports = Snapshot;

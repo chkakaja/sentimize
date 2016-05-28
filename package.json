@@ -13,6 +13,7 @@
     "babel": "babel client/ --out-dir client/compiled --presets=es2015,react --ignore=client/compiled,client/bower,env,node_modules,server,test --source-maps inline --watch"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.4.0",
     "body-parser": "^1.15.1",
     "bookshelf": "^0.9.5",
@@ -22,7 +23,8 @@
     "knex": "^0.11.5",
     "morgan": "^1.7.0",
     "mysql": "^2.10.2",
-    "passport": "^0.3.2"
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

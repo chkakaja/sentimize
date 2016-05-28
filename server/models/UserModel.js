@@ -1,5 +1,7 @@
-var db = require('../config/db.js');
+var db = require('../config/db');
 var Snapshot = require('./SnapshotModel.js');
+var bcrypt = require('bcrypt-nodejs');
+var Promise = require('bluebird');
 
 db.knex.schema.hasTable('users').then(function(exists) {
   if (!exists) {
@@ -30,7 +32,7 @@ var User = db.Model.extend({
   initialize: function() {
     this.on('creating', this.hashPassword);
   },
-  
+
   comparePassword: function(attemptedPassword, callback) {
     bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
       callback(isMatch);

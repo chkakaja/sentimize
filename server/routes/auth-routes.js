@@ -1,0 +1,53 @@
+var User = require('../models/UserModel.js');
+
+module.exports = function(app, passport) {
+
+    // Pre-authentication routes
+  app.get('/login',
+  function(req, res) {
+    res.render('login');
+  });
+
+  app.get('/signup',
+  function(req, res) {
+    res.render('signup');
+  });
+
+  app.post('/login',
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+  }));
+
+  app.post('/api/users',
+   function(req, res) {
+    console.log('req method', req.method);
+    console.log('reqbody', req.body);
+    var userObj = {};
+    userObj.username = req.body.username;
+    userObj.password = req.body.password;
+    User.where('username', userObj.username).fetch().then(function(user) {
+      if(!user) {
+        return new User(userObj).save();
+      }
+    }).then(function(newUser) {
+      console.log("NEW USER", newUser);
+      res.status(302).redirect('/');
+    })
+    .catch(function(err) {
+      console.log(err);
+    })
+  });
+
+  app.get('/signup',
+  function(req, res) {
+    res.render('signup');
+  });
+
+  app.get('/logout',
+  function(req, res) {
+    req.logout();
+    res.redirect('/login')
+  });
+
+};
