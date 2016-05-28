@@ -17,10 +17,15 @@ module.exports = function(app, express, passport) {
         if(!user) {
           return done(null, false, {message: 'Incorrect username.'});
         }
-        if (!user.validPassword(password)) {
-          return done(null, false, {message: 'Incorrect password.'});
+        var callback = function(passwordCorrect) {
+          if (!passwordCorrect) {
+            return done(null, false, {message: 'Incorrect password.'});
+          } else {
+            console.log('successfully logged in', username);
+            return done(null, user);
+          }
         }
-        return done(null, user);
+        user.comparePassword(password, callback);
       })
       .catch(function(err) {
         console.error(err);
@@ -34,7 +39,7 @@ module.exports = function(app, express, passport) {
 
   passport.deserializeUser(function(id, done) {
     User.where('id', id).fetch().then(function(user) {
-      done(err, user);
+      done(null, user);
     })
     .catch(function(err) {
       console.error(err);
