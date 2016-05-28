@@ -13,6 +13,7 @@
     "babel": "babel client/ --out-dir client/compiled --presets=es2015,react --ignore=client/compiled,client/bower,env,node_modules,server,test --source-maps inline --watch"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.4.0",
     "body-parser": "^1.15.1",
     "bookshelf": "^0.9.5",

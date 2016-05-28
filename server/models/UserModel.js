@@ -1,5 +1,6 @@
 var db = require('../config/db');
 var Snapshot = require('./SnapshotModel.js');
+var bcrypt = require('bcrypt-nodejs');
 
 db.knex.schema.hasTable('users').then(function(exists) {
   if (!exists) {

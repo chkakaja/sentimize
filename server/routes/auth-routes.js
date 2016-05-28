@@ -1,8 +1,16 @@
+var User = require('../models/UserModel.js');
+
 module.exports = function(app, passport) {
-  // Pre-authentication routes
+
+    // Pre-authentication routes
   app.get('/login',
   function(req, res) {
     res.render('login');
+  });
+
+  app.get('/signup',
+  function(req, res) {
+    res.render('signup');
   });
 
   app.post('/login',
@@ -13,6 +21,8 @@ module.exports = function(app, passport) {
 
   app.post('/api/users',
    function(req, res) {
+    console.log('req method', req.method);
+    console.log('reqbody', req.body);
     var userObj = {};
     userObj.username = req.body.username;
     userObj.password = req.body.password;
