@@ -10,7 +10,8 @@
   },
   "scripts": {
     "start": "nodemon server/server.js",
-    "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]"
+    "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]",
+    "lint": "eslint server & eslint client/components & eslint clients/index.jsx"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -31,11 +32,17 @@
     "react-router": "^2.4.1"
   },
   "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-eslint": "^6.0.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
+    "eslint": "^2.11.1",
+    "eslint-plugin-import": "^1.8.1",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
     "mocha": "^2.5.0",
     "watchify": "^3.7.0"
   },
