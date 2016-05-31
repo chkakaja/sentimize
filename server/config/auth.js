@@ -45,6 +45,4 @@ module.exports = function(app, express, passport) {
       console.error(err);
     })
   });
-
-  console.log('passport in auth.js', passport);
 }

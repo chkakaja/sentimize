@@ -21,8 +21,6 @@ module.exports = function(app, passport) {
 
   app.post('/api/users',
    function(req, res) {
-    console.log('req method', req.method);
-    console.log('reqbody', req.body);
     var userObj = {};
     userObj.username = req.body.username;
     userObj.password = req.body.password;
@@ -31,7 +29,6 @@ module.exports = function(app, passport) {
         return new User(userObj).save();
       }
     }).then(function(newUser) {
-      console.log("NEW USER", newUser);
       res.status(302).redirect('/');
     })
     .catch(function(err) {
