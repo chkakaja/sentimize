@@ -10,21 +10,29 @@
   },
   "scripts": {
     "start": "nodemon server/server.js",
-    "babel": "babel client/ --out-dir client/compiled --presets=es2015,react --ignore=client/compiled,client/bower,env,node_modules,server,test --source-maps inline --watch"
+    "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]"
   },
   "dependencies": {
+    "babelify": "^7.3.0",
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.4.0",
     "body-parser": "^1.15.1",
     "bookshelf": "^0.9.5",
+    "browserify": "^13.0.1",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "jade": "^1.11.0",
+    "jquery": "^2.2.4",
     "knex": "^0.11.5",
     "morgan": "^1.7.0",
     "mysql": "^2.10.2",
     "passport": "^0.3.2",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "pure": "^2.67.0",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-router": "^2.4.1",
+    "watchify": "^3.7.0"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
