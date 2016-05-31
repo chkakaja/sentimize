@@ -1,0 +1,16 @@
+{
+  //use babel eslint for parsing
+  "parser": "babel-eslint",
+
+  "env": {
+    //write for browser
+    "browser": true,
+    //in CommonJS
+    "node": true
+  },
+
+  //to override specific rules if needed
+  "rules": {
+    "quotes": [2, "single"]
+  }
+}
