@@ -14,7 +14,7 @@ require('./config/auth.js')(app, express, passport);
 // Pre-Authentication Routes & OAuth Requests
 require('./routes/auth-routes.js')(app, passport);
 
-app.use(util.ensureAuthenticated);
+// app.use(util.ensureAuthenticated);
 
 // View Routes
 require('./routes/view-routes.js')(app);
