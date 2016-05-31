@@ -6,7 +6,7 @@ client/bower
 npm-debug.log
 
 # Client Side Babel Compiled Files
-client/compiled/
+client/build/
 
 # Environment Configuration, API Keys
 env/env-config.js
