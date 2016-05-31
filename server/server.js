@@ -14,6 +14,7 @@ require('./config/auth.js')(app, express, passport);
 // Pre-Authentication Routes & OAuth Requests
 require('./routes/auth-routes.js')(app, passport);
 
+//Authentication check currently commented out, uncomment line to re-activate
 // app.use(util.ensureAuthenticated);
 
 // View Routes
