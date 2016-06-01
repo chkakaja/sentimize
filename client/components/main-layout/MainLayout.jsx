@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import NavBar from './NavBar.jsx';
+import Footer from './Footer.jsx';
 
 export default class MainLayout extends React.Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class MainLayout extends React.Component {
       <div className="main-layout">
         <NavBar />
         {this.props.children}
+        <Footer />
       </div>
     )
   }

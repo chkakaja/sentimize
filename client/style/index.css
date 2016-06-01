@@ -1,4 +1,4 @@
-.header {
+.nav-bar {
   height: 100px;
   background-color: #2d3e50;
   border-bottom: 4px solid;
@@ -37,4 +37,24 @@
 .pure-menu-link:hover {
   color: #2d3e50;
   background-color: rgb(200, 220, 235);
+}
+
+div.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  background-color: rgb(200, 210, 220);
+  text-align: center;
+  border-top: 1px solid rgb(180, 190, 200);
+}
+
+.footer-link {
+  font-size: 13.5px;
+  margin: auto 20px;
+}
+
+.footer-link:hover {
+  color: rgb(50, 70, 90);
 }

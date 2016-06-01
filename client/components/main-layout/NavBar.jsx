@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 export default class NavBar extends React.Component { 
   render() {
     return (
-      <div className="header">
+      <div className="nav-bar">
         <div className="pure-menu-heading">
           <Link className="home-link" to="/">Sentimize</Link>
         </div>
