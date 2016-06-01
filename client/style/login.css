@@ -4,7 +4,7 @@ body {
 
 div.login-container {
   position: absolute;
-  top: 35%;
+  top: 45%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   -ms-transform: translateX(-50%) translateY(-50%);
@@ -26,9 +26,46 @@ div.login-form {
 }
 
 div.login-form-input input {
-  margin: 10px 0;
+  border-radius: 5px;
+  margin: 4px 0;
   width: 250px;
   height: 35px;
   padding: 10px 20px;
   border: none;
+  text-align: left;
+  font-weight: 400;
 }
+
+div.login-form-input input:focus {
+  outline: none;
+}
+
+button.login-button {
+  margin: 15px 0;
+  width: 290px;
+  padding: 18px 20px;
+  background-color: rgb(70, 130, 210);
+  color: rgb(200, 220, 235);
+}
+
+button.login-button:hover {
+  color: white;
+}
+
+div.signup-link-container {
+  margin-top: 20px;
+}
+
+a.signup-link {
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin-top: 40px;
+  color: rgb(200, 220, 235);
+}
+
+a.signup-link:hover {
+  color: #FFFFFF;
+}
+
+
+
