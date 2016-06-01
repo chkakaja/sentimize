@@ -5,16 +5,37 @@ body {
   font-weight: 300;
   letter-spacing: .5px;
   text-align: center;
-  background-color: #EEEEEE;
-  color: #00ADB5;
+  background-color: rgb(240, 245, 250);
+  color: rgb(70, 130, 210);
+  min-height: 100%;
 }
 
 a {
   text-decoration: none;
   transition: all 0.2s ease-in-out;
-  color: #00ADB5;
+  color: rgb(70, 130, 210);
 }
 
 a:hover {
-  color: #0E2E3B;
+  color: rgb(200, 230, 250);
+}
+
+div.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 15px;
+  background-color: rgb(200, 210, 220);
+  text-align: center;
+  border-top: 1px solid rgb(180, 190, 200);
+}
+
+.footer-link {
+  font-size: 13.5px;
+  margin: auto 20px;
+}
+
+.footer-link:hover {
+  color: rgb(50, 70, 90);
 }

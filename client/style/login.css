@@ -1,5 +1,34 @@
-h1.login-title {
-  font-size: 50px;
+body {
+  background-color: #2d3e50;
+}
+
+div.login-container {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+}
+
+h1.title {
+  text-transform: none;
+  font-size: 60px;
   font-weight: 100;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  color: rgb(70, 130, 210);
+}
+
+div.login-form {
+  margin-top: -30px;
+}
+
+div.login-form-input input {
+  margin: 10px 0;
+  width: 250px;
+  height: 35px;
+  padding: 10px 20px;
+  border: none;
 }
