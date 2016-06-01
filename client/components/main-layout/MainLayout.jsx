@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Link } from 'react-router';
+import NavBar from './NavBar.jsx';
+import Footer from './Footer.jsx';
 
 export default class MainLayout extends React.Component {
   constructor(props) {
@@ -10,10 +11,9 @@ export default class MainLayout extends React.Component {
   render() {
     return (
       <div className="main-layout">
-        <h1><Link to="/">Sentimize</Link></h1>
-        <Link to="/record">Record</Link>
-        <Link to="/sessions">Sessions</Link>
+        <NavBar />
         {this.props.children}
+        <Footer />
       </div>
     )
   }

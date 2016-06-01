@@ -1,8 +1,15 @@
-extends ./layout
+extends ./base
+
+block styles
+  link(rel='stylesheet', href='style/login.css')
 
 block content
-  div Test
-  form(method='POST', action='/login')
-    input(type='text', name='username')
-    input(type='password', name='password')
-    button Login
+  div.login-container
+    h1.title Sentimize
+    div.login-form
+      form(method='POST', action='/login')
+        div.login-form-input.username
+          input(type='text', name='username', placeholder="Username")
+        div.login-form-input.password
+          input(type='password', name='password', placeholder="Password")
+        button.login-button Login
