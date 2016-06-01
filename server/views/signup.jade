@@ -1,9 +1,18 @@
-extends ./layout
+extends ./base
 
+block styles
+  link(rel='stylesheet', href='style/signup.css')
 
 block content
-  div Test
-  form(method='POST', action='/api/users')
-    input(type='text', name='username')
-    input(type='password', name='password')
-    button Signup
+  div.signup-container
+    h1.title Welcome to Sentimize.
+    div.signup-form
+      form(method='POST', action='/api/users')
+        div.signup-form-input.username
+          input(type='text', name='username', placeholder="Username")
+        div.signup-form-input.password
+          input(type='password', name='password', placeholder="Password")
+        button.signup-button Sign up
+
+    div.login-link-container
+      a.login-link(href='/login') Cancel
