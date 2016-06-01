@@ -41,17 +41,11 @@ div.login-form-input input:focus {
 }
 
 button.login-button {
-  font-weight: 400;
   margin: 15px 0;
   width: 290px;
   padding: 18px 20px;
   background-color: rgb(70, 130, 210);
   color: rgb(200, 220, 235);
-  border-style: none;
-  border-radius: 6px;
-  transition: all .2s ease;
-  text-align: center;
-  outline: none;
 }
 
 button.login-button:hover {
