@@ -2,9 +2,12 @@ import React from 'react';
 
 export default (props) => (
   <div className="session-entry">
-    <h4> Session Entry </h4>
+    <h4> {props.entry.title} </h4>
     <div>
-      {props.content}
+      {props.entry.description}
+    </div>
+    <div>
+      {props.entry.graph}
     </div>
   </div>
 );

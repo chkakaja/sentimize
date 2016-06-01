@@ -6,9 +6,21 @@ export default class SessionsView extends React.Component {
     super(props);
     this.state = {
       testEntries: [
-        'entry1 content',
-        'entry2 content',
-        'entry3 content'
+        {
+          title: 'Entry1',
+          description: 'content1',
+          graph: 'graph1'
+        },
+        {
+          title: 'Entry2',
+          description: 'content2',
+          graph: 'graph2'
+        },
+        {
+          title: 'Entry3',
+          description: 'content3',
+          graph: 'graph3'
+        }
       ]
     }
   }
@@ -17,7 +29,7 @@ export default class SessionsView extends React.Component {
     return (
       <div className="view sessions-view">
         <h4>Sessions View!</h4>
-          {this.state.testEntries.map(entry => <SessionEntry content={entry}/>)}
+          {this.state.testEntries.map(entry => <SessionEntry entry={entry}/>)}
       </div>
     )
   }
