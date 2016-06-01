@@ -8,6 +8,7 @@ var db = require('./../server/config/db');
 var env = require('./../env/env-config');
 var appUrl = env.PROTOCOL + env.HOST + ':' + env.PORT;
 
+
 describe('Sentimize - Server', function() {
 
   describe('Privileged Access', function(){
