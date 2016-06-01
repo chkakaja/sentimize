@@ -11,9 +11,10 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]",
-    "test": "mocha --bail --reporter spec test/",
+    "test": "npm run lint & npm run unit-tests",
+    "unit-tests": "mocha --bail --reporter spec test/",
     "nyan": "mocha --bail --reporter nyan test/",
-    "lint": "eslint server & eslint client/components & eslint clients/index.jsx"
+    "lint": "eslint --format 'node_modules/eslint-friendly-formatter' server client/components clients/index.jsx"
   },
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
@@ -42,6 +43,7 @@
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
     "eslint": "^2.11.1",
+    "eslint-friendly-formatter": "^2.0.5",
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.2",
     "eslint-plugin-react": "^5.1.1",
