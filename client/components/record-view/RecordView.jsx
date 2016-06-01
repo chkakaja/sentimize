@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import RecordBox from './record-box.jsx';
+import RecordInstructions from './record-instructions.jsx';
 
 export default class RecordView extends React.Component {
   constructor(props) {
@@ -8,9 +10,15 @@ export default class RecordView extends React.Component {
 
   render() {
     return (
-      <div className="view record-view">
-        <h4>RecordView!</h4>
+      <div>
+        <div className="recordbox">
+          <RecordBox/>
+        </div>  
+        <div className="recordinstructions">
+          <RecordInstructions/>
+        </div>
       </div>
     )
   }
 }
+
