@@ -31,7 +31,9 @@
 }
 
 .pure-menu-link {
+  border-radius: 3px;
   color: rgb(70, 130, 210);
+  transition: all .2s ease;
 }
 
 .pure-menu-link:hover {
@@ -46,8 +48,8 @@ div.footer {
   left: 0;
   padding: 15px;
   background-color: rgb(200, 210, 220);
-  text-align: center;
   border-top: 1px solid rgb(180, 190, 200);
+  text-align: center;
 }
 
 .footer-link {
