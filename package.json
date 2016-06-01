@@ -11,7 +11,8 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]",
-    "test": "mocha --bail --reporter nyan test/ServerSpec.js",
+    "test": "mocha --bail --reporter spec test/",
+    "nyan": "mocha --bail --reporter nyan test/",
     "lint": "eslint server & eslint client/components & eslint clients/index.jsx"
   },
   "dependencies": {
