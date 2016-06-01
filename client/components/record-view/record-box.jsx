@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default (props) => (
-  <div className="record-box">
+  <div>
     <h4>Video</h4>
     <div>
       // what happens here ...
