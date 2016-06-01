@@ -22,9 +22,9 @@ export default class RecordView extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className="record-box">
-          <Webcam ref='webcam'/>
+      <div className="pure-g">
+        <div className="pure-u-1-2 record-box">
+          <Webcam className="pure-u-1-1" ref='webcam'/>
           <div className="button-bar">
             <button className="screenshot-button" onClick={this.takeScreenshot.bind(this)}>Capture Screenshot</button>
 
@@ -33,10 +33,10 @@ export default class RecordView extends React.Component {
           </div>
           <img src={this.state.screenshot} />
         </div>
-
-        <RecordInstructions/>
+        <div className="pure-u-1-2">
+          <RecordInstructions/>
+        </div>
       </div>
     )
   }
 }
-
