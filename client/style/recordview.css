@@ -9,7 +9,7 @@
   -o-transform: translateX(-50%) translateY(-50%);
 }*/
 
-div.recordbox {
+div.record-box {
     position: relative;
     width: 400px;
     height: 200px;
@@ -19,7 +19,7 @@ div.recordbox {
     font-size: 45px;
     font-weight: 100;
     letter-spacing: 1px;
-} 
+}
 
 div.recordinstructions {
     position: relative;

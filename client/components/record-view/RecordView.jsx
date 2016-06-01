@@ -33,9 +33,8 @@ export default class RecordView extends React.Component {
           </div>
           <img src={this.state.screenshot} />
         </div>
-        <div className="recordinstructions">
-          <RecordInstructions/>
-        </div>
+
+        <RecordInstructions/>
       </div>
     )
   }
