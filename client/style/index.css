@@ -1,6 +1,7 @@
 .header {
   height: 100px;
   background-color: #2d3e50;
+  border-bottom: 4px solid;
 }
 
 .pure-menu-heading {
