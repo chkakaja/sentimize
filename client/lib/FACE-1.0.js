@@ -1,4 +1,4 @@
-var FACE = ( function() {
+var FACE = (function() {
   // Private Section
   var K_VERSION                   = "1.0";
   var K_SERVICE_URL               = "http://api.sightcorp.com/api/detect/";
@@ -8,7 +8,7 @@ var FACE = ( function() {
   var K_FORM_APP_KEY_FIELD_NAME   = "app_key";
   var K_FORM_ATTRIBUTE_FIELD_NAME = "attribute";
 
-  sendForm = function( formData, onSuccessCallback, onFailureCallback ) {
+  var sendForm = function( formData, onSuccessCallback, onFailureCallback ) {
     var ajaxRequest = new XMLHttpRequest();
     ajaxRequest.open( "POST", K_SERVICE_URL, true );
     ajaxRequest.onreadystatechange = ( function( tmpEvent ) {
@@ -49,7 +49,7 @@ var FACE = ( function() {
       var formData = new FormData();
       formData.append( K_FORM_IMG_FIELD_NAME,       imgFile );
       formData.append( K_FORM_CLIENT_ID_FIELD_NAME, client_id );
-      formData.append( K_FORM_APP_KEY_FIELD_NAME,   app_key );
+      formData.append( K_FORM_APP_KEY_FIELD_NAME,   api_key );
       if( attribute )
         formData.append( K_FORM_ATTRIBUTE_FIELD_NAME, attribute );
 
@@ -260,5 +260,7 @@ var FACE = ( function() {
 
   }
 
-}() );
+}());
+
+export default FACE;
 

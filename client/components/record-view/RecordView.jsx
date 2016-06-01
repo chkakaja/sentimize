@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import RecordBox from './record-box.jsx';
 import RecordInstructions from './record-instructions.jsx';
 import Webcam from 'react-webcam';
-// import FACE from './FACE-1.0.js';
+import API from './API_interaction.js';
 
 export default class RecordView extends React.Component {
   constructor(props) {
@@ -17,7 +17,9 @@ export default class RecordView extends React.Component {
     this.setState({
       screenshot: this.refs.webcam.getScreenshot()
     });
-    console.log('Screenshot data', this.refs.webcam.getScreenshot());
+    API.testFct('test from record-view');
+    API.sendDetectRequest(this.refs.webcam.getScreenshot());
+    // console.log('Screenshot data', this.refs.webcam.getScreenshot());
   }
 
   render() {
