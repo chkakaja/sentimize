@@ -1,8 +1,11 @@
 extends ./base
 
+block styles
+  link(rel='stylesheet', href='style/login.css')
+
 block content
-  div Test
-  form(method='POST', action='/login')
-    input(type='text', name='username')
-    input(type='password', name='password')
-    button Login
+  div.login-form
+    form(method='POST', action='/login')
+      input(type='text', name='username')
+      input(type='password', name='password')
+      button Login
