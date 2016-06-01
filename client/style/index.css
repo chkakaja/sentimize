@@ -19,7 +19,7 @@
   color: rgb(200, 230, 250);
 }
 
-.pure-menu {
+.pure-menu {  
   position: fixed;
   z-index: 0;
   margin: 40px 0;
@@ -34,6 +34,7 @@
   border-radius: 3px;
   color: rgb(70, 130, 210);
   transition: all .2s ease;
+  margin: 0 4px;
 }
 
 .pure-menu-link:hover {

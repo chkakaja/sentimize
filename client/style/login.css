@@ -4,7 +4,7 @@ body {
 
 div.login-container {
   position: absolute;
-  top: 38%;
+  top: 45%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   -ms-transform: translateX(-50%) translateY(-50%);
@@ -42,11 +42,11 @@ div.login-form-input input:focus {
 
 button.login-button {
   font-weight: 400;
-  margin-top: 30px;
+  margin: 15px 0;
   width: 290px;
   padding: 18px 20px;
-  background-color: rgb(200, 220, 235);
-  color: rgb(70, 130, 210);
+  background-color: rgb(70, 130, 210);
+  color: rgb(200, 220, 235);
   border-style: none;
   border-radius: 6px;
   transition: all .2s ease;
@@ -55,6 +55,23 @@ button.login-button {
 }
 
 button.login-button:hover {
-  background-color: rgb(165, 180, 205);
+  color: white;
 }
+
+div.signup-link-container {
+  margin-top: 20px;
+}
+
+a.signup-link {
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin-top: 40px;
+  color: rgb(200, 220, 235);
+}
+
+a.signup-link:hover {
+  color: #FFFFFF;
+}
+
+
 
