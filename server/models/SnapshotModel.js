@@ -20,7 +20,7 @@ db.knex.schema.hasTable('snapshots').then(function(exists){
       snapshot.integer('userId');
       snapshot.integer('sessionId');
     }).then(function(){
-      console.log("Snapshots table created")
+      console.log('Snapshots table created')
     })
   }
 });
