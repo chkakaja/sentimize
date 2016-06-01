@@ -1,8 +1,8 @@
 {
   "name": "greenfield-project",
   "version": "1.0.0",
-  "description": "Hone your typing abilities.",
-  "author": "jackrzhang <15jzhang@gmail.com>",
+  "description": "Sentimize.",
+  "author": "chkakaja",
   "license": "MIT",
   "private": true,
   "engines": {
@@ -11,6 +11,7 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]",
+    "test": "mocha --bail --reporter nyan test/ServerSpec.js",
     "lint": "eslint server & eslint client/components & eslint clients/index.jsx"
   },
   "dependencies": {
@@ -44,6 +45,7 @@
     "eslint-plugin-jsx-a11y": "^1.2.2",
     "eslint-plugin-react": "^5.1.1",
     "mocha": "^2.5.0",
+    "request": "^2.72.0",
     "watchify": "^3.7.0"
   },
   "repository": {
