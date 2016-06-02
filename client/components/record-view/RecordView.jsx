@@ -17,7 +17,6 @@ export default class RecordView extends React.Component {
     this.setState({
       screenshot: this.refs.webcam.getScreenshot()
     });
-    API.testFct('test from record-view');
     API.sendDetectRequest(this.refs.webcam.getScreenshot());
     // console.log('Screenshot data', this.refs.webcam.getScreenshot());
   }
@@ -33,11 +32,20 @@ export default class RecordView extends React.Component {
             <button className="record-button">Record</button>
             <button className="stop-button">Stop</button>
           </div>
-          <img src={this.state.screenshot} />
+          <img src={this.state.screenshot} id='screenshot'/>
         </div>
         <div className="pure-u-1-2">
           <RecordInstructions/>
+          <form method="post" action="https://api.sightcorp.com/api/detect/"
+                enctype="multipart/form-data">
+            <input type="text" name="app_key" value="565337c2e5dd42b69643c676e8927869"/>
+            <input type="text" name="client_id" value="d30d8accb4c84aa69e3af0eb878df592"/>
+            <input type="text" name="attribute" value="age,gender"/>
+            <input type="file" name="img"/>
+            <input type="submit"/>
+          </form>
         </div>
+
       </div>
     )
   }

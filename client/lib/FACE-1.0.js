@@ -67,7 +67,7 @@ var FACE = (function() {
       var formData = new FormData();
       formData.append( K_FORM_URL_FIELD_NAME,       url );
       formData.append( K_FORM_CLIENT_ID_FIELD_NAME, client_id );
-      formData.append( K_FORM_APP_KEY_FIELD_NAME,   app_key );
+      formData.append( K_FORM_APP_KEY_FIELD_NAME,   api_key );
       if( attribute )
         formData.append( K_FORM_ATTRIBUTE_FIELD_NAME, attribute );
 
@@ -177,19 +177,28 @@ var FACE = (function() {
                  // dataURItoBlob()
                  dataURItoBlob : function( dataURI ) {
                    var binary = atob( dataURI.split( ',' )[ 1 ] );
+                   console.log('binary', binary);
                    var arr = [];
                    for( var i = 0; i < binary.length; i++ ) {
                      arr.push( binary.charCodeAt( i ) );
                    }
+                   console.log('arr1', arr);
                    return new Blob( [new Uint8Array( arr )], { type : 'image/jpeg' } );
                  },
 
                  // resizeImage()
                  resizeImage : function( img, callback, width, height ) {
+                    console.log('in resizeImage');
 
+                    console.log('callback', callback);
+
+                    console.log('isImage', !FACE.util.isImage( img ));
                    // TODO : Diego : Do proper input checking (all functions)
-                   if( !FACE.util.isImage( img ) || !callback || ( width <= 0 ) || ( height <= 0 ) )
-                     return false;
+                   // if( !FACE.util.isImage( img ) || !callback || ( width <= 0 ) || ( height <= 0 ) ) {
+                   //    console.log(!callback);
+                   //    console.log('wrong input check');
+                   //   return false;
+                   // }
 
                    // Prepare the canvas
                    var canvas = document.createElement( 'canvas' );
@@ -199,15 +208,21 @@ var FACE = (function() {
 
                    var context = canvas.getContext( '2d' );
 
+                   console.log('canvas', canvas);
+
                    // TODO : Diego : Consider using workers to remove callback chaining craziness
                    var readImgCallback = function( data ) {
                      var tmpImg = new Image();
+                     console.log('in readImgCallback');
                      tmpImg.onload = function() {
                        context.drawImage( tmpImg, 0, 0, width, height );
                        context.canvas.toBlob( function( blob ) { callback( blob ); }, 'image/jpeg' );
                      }
                      tmpImg.src = data;
-                   }
+                   };
+
+                   readImgCallback(img);
+
                    FACE.util.readFileAsBase64( img, readImgCallback );
                    return true;
                  },
@@ -228,8 +243,10 @@ var FACE = (function() {
                      return false;
                    }
 
-                   if( !file || !( file instanceof Blob ) || !callback )
-                     return false;
+                   // if( !file || !( file instanceof Blob ) || !callback ) {
+                   //    console.log('exit base64 read', !file, !( file instanceof Blob ), !callback);
+                   //   return false;
+                   // }
 
                    var reader = new FileReader();
                    if( callback ) {
