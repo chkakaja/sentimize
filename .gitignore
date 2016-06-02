@@ -9,4 +9,5 @@ npm-debug.log
 client/build/
 
 # Environment Configuration, API Keys
-env/.env
+env/development.env
+env/production.env

@@ -1,6 +1,6 @@
 // Load environment variables
-if (process.env.NODE_ENV !== 'integration') {
-  require('dotenv').config({ path: './env/.env' });
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config({ path: './env/development.env' });
 }
 
 var express = require('express');
