@@ -1,11 +1,11 @@
-var express = require('express');
-var passport = require('passport');
-var util = require('./lib/utility.js');
-
 // Load environment variables
 if (process.env.NODE_ENV !== 'integration') {
   require('dotenv').config({ path: './env/.env' });
 }
+
+var express = require('express');
+var passport = require('passport');
+var util = require('./lib/utility.js');
 
 var app = express();
 
