@@ -31,5 +31,6 @@ app.get('/*', function(req, res) {
 })
 
 app.listen(Number(process.env.PORT), process.env.HOST, function() {
+  console.log('NODE_ENV: ' + process.env.NODE_ENV);
   console.log(process.env.APP_NAME + ' is listening at ' + process.env.HOST + ' on port ' + process.env.PORT + '.')
 });

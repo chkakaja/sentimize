@@ -9,7 +9,7 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "NODE_ENV=development nodemon server/server.js",
     "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]",
     "test": "npm run unit-tests",
     "unit-tests": "mocha --bail --reporter spec test/",
