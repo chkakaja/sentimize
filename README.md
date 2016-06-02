@@ -5,18 +5,18 @@ Automated sentiment reports for itnerviewers and itnerviewees.
 1. [Usage](#Usage)
 2. [Requirements](#Requirements)
 3. [Development](#Development)
-    1. [Installing Dependencies](#Dnstalling-Dependencies)
-    2. [Tasks](#Tasks)
-    3. [Stories in Ready](https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)](https://waffle.io/chkakaja/sentimize)
-
+  1. [Installing Dependencies](#Dnstalling-Dependencies)
+  2. [Tasks](#Tasks)
+  3. [Stories in Ready](#https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)]
+  (https://waffle.io/chkakaja/sentimize)
 4. [Team](#Team)
+5. [Roadmap](#Roadmap)
 5. [Contributing](#Contributing)
 
 ## Usage
 > Some usage instructions
 
 ## Requirements
-
 - Node
 - Express
 - Jade
@@ -30,14 +30,13 @@ Automated sentiment reports for itnerviewers and itnerviewees.
 ## Development
 
 ### Installing Dependencies
+  From within the root directory:
 
-From within the root directory:
-
-```sh
-sudo npm install -g bower
-npm install
-bower install
-```
+  ```sh
+  sudo npm install -g bower
+  npm install
+  bower install
+  ```
 
 ### Installing Dependencies
 
@@ -46,9 +45,8 @@ bower install
   - Scrum Master:             Jack Zhang
   - Development Team Members: Chris Haug, Jack Zhang, Kani Munidasa, Kat Hao
 
-### Roadmap
+## Roadmap
 View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
-
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
