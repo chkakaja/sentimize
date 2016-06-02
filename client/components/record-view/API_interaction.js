@@ -1,8 +1,8 @@
 import FACE from '../../lib/FACE-1.0.js';
-import env from '../../env/config.js';
+import env from '../../../env/client-config.js';
 
-var app_key = env.APP_KEY;
-var client_id = env.CLIENT_ID;
+var app_key = env.FACE_APP_KEY;
+var client_id = env.FACE_CLIENT_ID;
 
 var success = function(result) {
   console.log('data returned from API', result);
