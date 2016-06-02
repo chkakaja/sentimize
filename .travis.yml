@@ -1,7 +1,14 @@
 language: node_js
+env:
+  - NODE_ENV=integration
 node_js:
+  - '6.1'
   - '6.0'
   - '4.4'
+services:
+  - mysql
+before_install:
+  - mysql -e "CREATE DATABASE IF NOT EXISTS sentimize;" -uroot
 script:
   - npm run lint
   - npm test
