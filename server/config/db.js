@@ -1,18 +1,16 @@
-var env = require('./../../env/env-config.js');
-
 var connection = {
   client: 'mysql',
   connection: {
-    host: env.HOST,
-    database: env.APP_NAME,
-    user: env.DB_USER,
-    password: env.DB_PASSWORD,
+    host: process.env.HOST,
+    database: process.env.APP_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
     charset: 'utf8'
   }
 };
 
 var knex = require('knex')(connection);
 
-connection.database = env.APP_NAME;
+connection.database = process.env.APP_NAME;
 var db = require('bookshelf')(knex);
 module.exports = db;
