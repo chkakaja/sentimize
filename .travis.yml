@@ -8,5 +8,5 @@ services:
 before_install:
   - mysql -e "CREATE DATABASE IF NOT EXISTS sentimize;" -uroot
 script:
-  - npm run lint
+  - npm run lint & NODE_ENV=integration node server/server.js
   - npm test
