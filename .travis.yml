@@ -1,6 +1,4 @@
 language: node_js
-env:
-  - NODE_ENV=integration
 node_js:
   - '6.1'
   - '6.0'
