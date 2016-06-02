@@ -1,8 +1,11 @@
-var env = require('./../env/env-config');
-var util = require('./lib/utility.js')
+// Load environment variables
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config({ path: './env/development.env' });
+}
 
 var express = require('express');
 var passport = require('passport');
+var util = require('./lib/utility.js');
 
 var app = express();
 
@@ -15,7 +18,7 @@ require('./config/auth.js')(app, express, passport);
 require('./routes/auth-routes.js')(app, passport);
 
 //Authentication check currently commented out, uncomment line to re-activate
-// app.use(util.ensureAuthenticated);
+app.use(util.ensureAuthenticated);
 
 // View Routes
 require('./routes/view-routes.js')(app);
@@ -27,6 +30,7 @@ app.get('/*', function(req, res) {
   res.redirect('/');
 })
 
-app.listen(env.PORT, env.HOST, function() {
-  console.log(env.APP_NAME + ' is listening at ' + env.HOST + ' on port ' + env.PORT + '.')
+app.listen(Number(process.env.PORT), process.env.HOST, function() {
+  console.log('NODE_ENV: ' + process.env.NODE_ENV);
+  console.log(process.env.APP_NAME + ' is listening at ' + process.env.HOST + ' on port ' + process.env.PORT + '.')
 });

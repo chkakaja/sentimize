@@ -1,15 +1,55 @@
 import React from 'react';
-import ReactDom from 'react-dom';
+import SessionEntry from './SessionEntry.jsx';
 
 export default class SessionsView extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      testEntries: [
+        {
+          title: 'Pikachu',
+          description: 'Pokemon lala some words go here',
+          graph: 'graph1'
+        },
+        {
+          title: 'Entry2',
+          description: 'content2',
+          graph: 'graph2'
+        },
+        {
+          title: 'Entry3',
+          description: 'content3',
+          graph: 'graph3'
+        },
+        {
+          title: 'Entry1',
+          description: 'content1',
+          graph: 'graph1'
+        },
+        {
+          title: 'Entry2',
+          description: 'content2',
+          graph: 'graph2'
+        },
+        {
+          title: 'Entry1',
+          description: 'content1',
+          graph: 'graph1'
+        },
+        {
+          title: 'Entry2',
+          description: 'content2',
+          graph: 'graph2'
+        }
+      ]
+    }
   }
 
   render() {
     return (
       <div className="view sessions-view">
         <h4>Sessions View!</h4>
+          {this.state.testEntries.map(entry => <SessionEntry entry={entry}/>)}
       </div>
     )
   }
