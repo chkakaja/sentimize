@@ -1,8 +1,11 @@
-var env = require('./../env/env-config');
-var util = require('./lib/utility.js')
-
 var express = require('express');
 var passport = require('passport');
+var util = require('./lib/utility.js');
+
+// Load environment variables
+if (process.env.NODE_ENV !== 'integration') {
+  require('dotenv').config({ path: './env/.env' });
+}
 
 var app = express();
 
@@ -27,6 +30,6 @@ app.get('/*', function(req, res) {
   res.redirect('/');
 })
 
-app.listen(env.PORT, env.HOST, function() {
-  console.log(env.APP_NAME + ' is listening at ' + env.HOST + ' on port ' + env.PORT + '.')
+app.listen(Number(process.env.PORT), process.env.HOST, function() {
+  console.log(process.env.APP_NAME + ' is listening at ' + process.env.HOST + ' on port ' + process.env.PORT + '.')
 });

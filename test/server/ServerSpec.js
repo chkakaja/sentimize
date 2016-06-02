@@ -5,9 +5,7 @@ var request = require('request');
 var expect = require('chai').expect;
 
 var db = require('./../../server/config/db');
-var env = require('./../../env/env-config');
-var appUrl = env.PROTOCOL + env.HOST + ':' + env.PORT;
-
+var appUrl = process.env.PROTOCOL + process.env.HOST + ':' + process.env.PORT;
 
 describe('Sentimize - Server', function() {
 
