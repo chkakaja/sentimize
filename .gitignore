@@ -9,7 +9,7 @@ npm-debug.log
 client/build/
 
 # Client Environment variables for APIs
-client/env/config.js
+env/config.js
 
 # Environment Configuration, API Keys
 env/development.env
