@@ -11,7 +11,7 @@
   "scripts": {
     "start": "nodemon server/server.js",
     "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]",
-    "test": "npm run lint & npm run unit-tests",
+    "test": "npm run unit-tests",
     "unit-tests": "mocha --bail --reporter spec test/",
     "nyan": "mocha --bail --reporter nyan test/",
     "lint": "eslint --format 'node_modules/eslint-friendly-formatter' server client/components clients/index.jsx"
