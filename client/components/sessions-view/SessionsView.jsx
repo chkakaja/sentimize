@@ -7,8 +7,8 @@ export default class SessionsView extends React.Component {
     this.state = {
       testEntries: [
         {
-          title: 'Entry1',
-          description: 'content1',
+          title: 'Pikachu',
+          description: 'Pokemon lala some words go here',
           graph: 'graph1'
         },
         {
@@ -20,6 +20,26 @@ export default class SessionsView extends React.Component {
           title: 'Entry3',
           description: 'content3',
           graph: 'graph3'
+        },
+        {
+          title: 'Entry1',
+          description: 'content1',
+          graph: 'graph1'
+        },
+        {
+          title: 'Entry2',
+          description: 'content2',
+          graph: 'graph2'
+        },
+        {
+          title: 'Entry1',
+          description: 'content1',
+          graph: 'graph1'
+        },
+        {
+          title: 'Entry2',
+          description: 'content2',
+          graph: 'graph2'
         }
       ]
     }
