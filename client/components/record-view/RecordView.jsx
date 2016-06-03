@@ -27,19 +27,18 @@ export default class RecordView extends React.Component {
       url: '/api/session',
       error: function() {
         console.log('error')
-       },
-      success: function(data) {
-        console.log(savedSession, "comingback from server savedSession")
+      },
+      success: function(savedSession) {
+        console.log(savedSession);
         this.setState({
           sessionId: savedSession.id
         })
-       },
+      }.bind(this),
     });
 
   }
 
   takeScreenshot() {
-
     this.setState({
       screenshot: this.refs.webcam.getScreenshot()
     });
