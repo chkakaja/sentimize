@@ -4,16 +4,29 @@ import RecordBox from './record-box.jsx';
 import RecordInstructions from './record-instructions.jsx';
 import Webcam from 'react-webcam';
 import API from './API_interaction.js';
+import $ from 'jquery';
 
 export default class RecordView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      screenshot: null
+      screenshot: null,
+      sessionId: null
     }
   }
 
+  startSession() {
+    $.post('/api/session',/*{SEND IN USER data if we have},*/ function(savedSession) {
+      console.log(savedSession, "comingback from server savedSession")
+      this.setState({
+        sessionId: savedSession.id
+      })
+    })
+
+  }
+
   takeScreenshot() {
+
     this.setState({
       screenshot: this.refs.webcam.getScreenshot()
     });
@@ -29,7 +42,7 @@ export default class RecordView extends React.Component {
           <div className="button-bar">
             <button className="screenshot-button" onClick={this.takeScreenshot.bind(this)}>Capture Screenshot</button>
 
-            <button className="record-button">Record</button>
+            <button onClick={this.startSession.bind(this)} className="record-button">Record</button>
             <button className="stop-button">Stop</button>
           </div>
           <img src={this.state.screenshot} id='screenshot'/>

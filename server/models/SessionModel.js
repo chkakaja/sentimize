@@ -18,11 +18,11 @@ var Session = db.Model.extend({
   tableName: 'sessions',
   hasTimestamps: true,
   user: function() {
-    return this.belongTo(User);
+    return this.belongTo(User, 'userId');
   },
   snapshots: function() {
     return this.hasMany(Snapshot);
   }
 });
 
-module.exports = User;
+module.exports = Session;

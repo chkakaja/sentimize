@@ -1,5 +1,5 @@
 import FACE from '../../lib/FACE-1.0.js';
-import env from '../../env/config.js';
+import env from '../../../env/config.js';
 
 var app_key = env.APP_KEY;
 var client_id = env.CLIENT_ID;
