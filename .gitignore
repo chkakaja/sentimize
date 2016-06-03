@@ -8,6 +8,10 @@ npm-debug.log
 # Client Side Babel Compiled Files
 client/build/
 
+# Client Environment variables for APIs
+env/client-config.js
+
 # Environment Configuration, API Keys
-env/env-config.js
-env/google-oauth-2.0.js
+env/development.env
+env/production.env
+env/client-config.js
