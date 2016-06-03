@@ -8,7 +8,7 @@ db.knex.schema.hasTable('snapshots').then(function(exists){
       snapshot.increments('id').primary();
       snapshot.integer('mood');
       snapshot.integer('gender-c');
-      snapshot.string('gender-v', 1);
+      snapshot.string('gender-v');
       snapshot.integer('age');
       snapshot.integer('ethnicity-c');
       snapshot.string('ethnicity-v', 50);
@@ -17,6 +17,7 @@ db.knex.schema.hasTable('snapshots').then(function(exists){
       snapshot.integer('suprise');
       snapshot.integer('fear');
       snapshot.integer('happiness');
+      snapshot.integer('disgust');
       snapshot.integer('userId');
       snapshot.integer('sessionId');
     }).then(function(){

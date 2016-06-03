@@ -8,6 +8,11 @@ import $ from 'jquery';
 export default class RecordView extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      sessionId: null
+    }
+
   }
 
   componentDidMount() {
@@ -15,12 +20,7 @@ export default class RecordView extends React.Component {
   }
 
   startRecording() {
-    var recordInterval = setInterval(function() {
-      FACE.webcam.takePicture('webcam', 'current-snapshot');
-      var snapshot = document.querySelector('#current-snapshot');
-      API.sendDetectRequest(snapshot.src);
-    }, 2000);
-
+    
     $.ajax({
       type: 'POST',
       url: '/api/session',
@@ -32,8 +32,19 @@ export default class RecordView extends React.Component {
         this.setState({
           sessionId: savedSession.id
         })
+
+        this.startSnapshot()
+        
       }.bind(this),
     });
+  }
+
+  startSnapshot() {
+    var recordInterval = setInterval(function() {
+      FACE.webcam.takePicture('webcam', 'current-snapshot');
+      var snapshot = document.querySelector('#current-snapshot');
+      API.sendDetectRequest(snapshot.src, this.state.sessionId);
+    }, 2000);
   }
 
   stopRecording() {
