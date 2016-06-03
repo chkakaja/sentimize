@@ -11,8 +11,9 @@
   "scripts": {
     "start": "NODE_ENV=development nodemon server/server.js",
     "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]",
-    "test": "npm run unit-tests",
-    "unit-tests": "mocha --compilers js:babel-core/register --bail --reporter spec test/",
+    "test": "npm run test-server && npm run test-client",
+    "test-server": "mocha --bail --reporter spec test/server/",
+    "test-client": "mocha --compilers js:babel-core/register --bail --reporter spec test/client/",
     "nyan": "mocha --compilers js:babel-core/register --bail --reporter nyan test/",
     "lint": "eslint --format 'node_modules/eslint-friendly-formatter' server client/components clients/index.jsx"
   },
