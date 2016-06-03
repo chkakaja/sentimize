@@ -6,8 +6,9 @@ var expect = require('chai').expect;
 
 var db = require('./../../server/config/db');
 var appUrl = process.env.PROTOCOL + process.env.HOST + ':' + process.env.PORT;
+console.log(appUrl);
 
-describe('Sentimize - Server', function() {
+describe('Express Server', function() {
 
   describe('Privileged Access', function(){
     beforeEach(function() {

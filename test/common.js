@@ -4,5 +4,6 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 var jsdom = require('jsdom');
-global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
+const DEFAULT_HTML = '<!doctype html><html><body></body></html>';
+global.document = jsdom.jsdom(DEFAULT_HTML);
 global.window = document.parentWindow;

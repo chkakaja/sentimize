@@ -12,8 +12,8 @@
     "start": "NODE_ENV=development nodemon server/server.js",
     "bundle": "watchify client/index.jsx -o client/build/index.bundle.js -v -t [ babelify --presets [ es2015 react ] ]",
     "test": "npm run unit-tests",
-    "unit-tests": "mocha --bail --reporter spec test/",
-    "nyan": "mocha --bail --reporter nyan test/",
+    "unit-tests": "mocha --bail --reporter spec --compilers js:babel-require test/",
+    "nyan": "mocha --bail --reporter nyan --compilers js:babel-require test/",
     "lint": "eslint --format 'node_modules/eslint-friendly-formatter' server client/components clients/index.jsx"
   },
   "dependencies": {
@@ -41,6 +41,7 @@
     "babel-eslint": "^6.0.4",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
+    "babel-require": "^1.0.1",
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "chai": "^3.5.0",
@@ -51,6 +52,7 @@
     "eslint-plugin-react": "^5.1.1",
     "jsdom": "^9.2.1",
     "mocha": "^2.5.0",
+    "react-addons-test-utils": "^15.1.0",
     "request": "^2.72.0",
     "request-promise": "^3.0.0",
     "watchify": "^3.7.0"
