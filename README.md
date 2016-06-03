@@ -5,49 +5,69 @@ Automated sentiment reports for itnerviewers and itnerviewees.
 
 ## Table of Contents
 1. [Usage](#Usage)
-2. [Installation](#Installation)
-  1. [Installing Dependencies](#Installing-Dependencies)
-  2. [Setting up Environment Variables](#Environment-Variables)
+2. [Getting started](#Getting-Started)
+  1. [Clone the latest version](#Installing-Dependencies)
+  1. [Install Dependencies](#Installing-Dependencies)
+  2. [Setup Environment Variables](#Environment-Variables)
 3. [Technologies](#Technologies)
 4. [Architecture](#Architecture)
 5. [Team](#Team)
 6. [Contributing](#Contributing)
-  3. [Stories in Ready](#https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)
+  1. [Stories in Ready](#https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)
 
 ## Usage
 > Some usage instructions
 
-## Installation
+## Getting started
 
-### Installing Dependencies
-  From within the root directory:
+#### 1. Clone the latest version
+
+  Start by cloning the latest version of Sentimize on your local machine by running:
+
+  ```shell
+  $ git clone https://github.com/chkakaja/sentimize
+  $ cd sentimize
+  ```
 
   ```sh
-  sudo npm install -g bower
   npm install
-  bower install
   ```
+
+#### 2. Install Dependencies
+  From within the root directory:
+
+  1. Clone this repo using
+  2. Run
+  3. test
+
+  ```sh
+  npm install
+  ```
+
+#### 3. Setup Environment Variables
 
 ## Technologies
 
-#### Front end
+##### Front end:
 - React
 - FaceScope API
 - Babel
 
-#### Back end
+##### Back end:
 - Node
 - Express
 - Jade
 - Bookshelf/Knex
 - MySQL
 
-#### Testing
+##### Testing:
 - Mocha
 - Chai
 - jsdom
 
 ## Architecture
+
+## Directory Layout
 
 ## Team
   - Product Owner:            Christian Haug
@@ -56,3 +76,5 @@ Automated sentiment reports for itnerviewers and itnerviewees.
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
+
+#####[Stories in Ready](#https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)
