@@ -14,6 +14,7 @@ export default class NavBar extends React.Component {
           <ul className="pure-menu-list">
             <li className="pure-menu-item"><Link to="/record" className="pure-menu-link">Record</Link></li>
             <li className="pure-menu-item"><Link to="/sessions" className="pure-menu-link">Sessions</Link></li>
+            <li className="pure-menu-item"><Link to="/reports" className="pure-menu-link">Reports</Link></li>
             <li className="pure-menu-item"><a href="/logout" className="pure-menu-link">Log out</a></li>
           </ul>
         </div>
