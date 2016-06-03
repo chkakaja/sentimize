@@ -20,7 +20,7 @@ export default class RecordView extends React.Component {
   }
 
   startRecording() {
-    
+
     $.ajax({
       type: 'POST',
       url: '/api/session',
@@ -34,18 +34,18 @@ export default class RecordView extends React.Component {
         })
 
         this.startSnapshot()
-        
+
       }.bind(this),
     });
   }
 
   startSnapshot() {
     var sessionId = this.state.sessionId;
-    // var recordInterval = setInterval(function() {
+    var recordInterval = setInterval(function() {
       FACE.webcam.takePicture('webcam', 'current-snapshot');
       var snapshot = document.querySelector('#current-snapshot');
       API.sendDetectRequest(snapshot.src, sessionId);
-    // }.bind(this), 2000);
+    }.bind(this), 3000);
   }
 
   stopRecording() {

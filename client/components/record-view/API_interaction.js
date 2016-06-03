@@ -1,5 +1,5 @@
 import FACE from '../../lib/FACE-1.0.js';
-import env from '../../../env/config.js';
+import env from '../../../env/client-config.js';
 import $ from 'jquery';
 
 var app_key = env.FACE_APP_KEY;
@@ -9,7 +9,7 @@ var globalsessionId = null;
 var success = function(result) {
   result.sessionId = globalsessionId
   console.log('data returned from API', result);
-  
+
   $.ajax({
       type: 'POST',
       url: '/api/snapshot',
