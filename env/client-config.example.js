@@ -1,4 +1,4 @@
 export default {
-  APP_KEY: '',
-  CLIENT_ID: ''
+  FACE_APP_KEY: '',
+  FACE_CLIENT_ID: ''
 }
