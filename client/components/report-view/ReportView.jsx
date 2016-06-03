@@ -4,10 +4,6 @@ import {Line as LineChart} from 'react-chartjs';
 import {Radar as RadarChart} from 'react-chartjs';
 
 
-// install chart.js and react-chartjs
-  // npm install chart.js --save // DONE
-  // npm install --save chart.js@^1.1.1 react react-dom
-
   const options = {
     scaleShowGridLines: true,
     scaleGridLineColor: 'rgba(0,0,0,.05)',
@@ -23,7 +19,7 @@ import {Radar as RadarChart} from 'react-chartjs';
     datasetStroke: true,
     datasetStrokeWidth: 2,
     datasetFill: true,
-    // legendTemplate: '<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+    legendTemplate: '<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
   }
 
   const styles = {
@@ -82,12 +78,11 @@ export default class ChartComponent extends React.Component {
           pointBorderColor: '#fff',
           pointHoverBackgroundColor: '#fff',
           pointHoverBorderColor: 'rgba(179,181,198,1)',
-          data: [5, 15, 10, 20, 35, 10, 5]
+          data: [10, 15, 10, 20, 35, 10]
         }
       ]
     }
   }
-
   
   render() {
     return (
