@@ -1,39 +1,43 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import RecordInstructions from './record-instructions.jsx';
-import Webcam from 'react-webcam';
+import FACE from '../../lib/FACE-1.0.js';
 import API from './API_interaction.js';
 
 export default class RecordView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      screenshot: null
-    }
   }
 
-  takeScreenshot() {
-    this.setState({
-      screenshot: this.refs.webcam.getScreenshot()
-    });
-    API.sendDetectRequest(this.refs.webcam.getScreenshot());
-    // console.log('Screenshot data', this.refs.webcam.getScreenshot());
+  componentDidMount() {
+    FACE.webcam.startPlaying('webcam');
+  }
+
+  startRecording() {
+    var recordInterval = setInterval(function() {
+      FACE.webcam.takePicture('webcam', 'current-snapshot');
+      var snapshot = document.querySelector('#current-snapshot');
+      API.sendDetectRequest(snapshot.src);
+    }, 2000);
+  }
+
+  stopRecording() {
+    clearInterval(recordInterval);
   }
 
   render() {
     return (
       <div className="pure-g">
-        <div className="pure-u-1-2 record-box">
-          <Webcam className="pure-u-1-1" ref='webcam'/>
+        <div className="pure-u-2-3 record-box">
+          <video id='webcam' className="pure-u-1-1" autoplay></video>
           <div className="button-bar">
             <button className="screenshot-button" onClick={this.takeScreenshot.bind(this)}>Capture Screenshot</button>
-
-            <button className="record-button">Record</button>
-            <button className="stop-button">Stop</button>
+            <button className="record-button" onClick={this.startRecording.bind(this)}>Record</button>
+            <button className="stop-button" onClick={this.stopRecording.bind(this)}>Stop</button>
           </div>
-          <img src={this.state.screenshot} id='screenshot'/>
+          <img id='current-snapshot' src=''/>
         </div>
-        <div className="pure-u-1-2">
+        <div className="pure-u-1-3">
           <RecordInstructions/>
         </div>
       </div>

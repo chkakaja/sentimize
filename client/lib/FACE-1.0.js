@@ -177,12 +177,10 @@ var FACE = (function() {
                  // dataURItoBlob()
                  dataURItoBlob : function( dataURI ) {
                    var binary = atob( dataURI.split( ',' )[ 1 ] );
-                   console.log('binary', binary);
                    var arr = [];
                    for( var i = 0; i < binary.length; i++ ) {
                      arr.push( binary.charCodeAt( i ) );
                    }
-                   console.log('arr1', arr);
                    return new Blob( [new Uint8Array( arr )], { type : 'image/jpeg' } );
                  },
 
