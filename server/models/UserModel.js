@@ -1,5 +1,6 @@
 var db = require('../config/db');
 var Snapshot = require('./SnapshotModel.js');
+var Session = require('./SessionModel.js');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
 
@@ -27,6 +28,9 @@ var User = db.Model.extend({
   hasTimestamps: true,
   snapshots: function() {
     return this.hasMany(Snapshot);
+  },
+  sessions: function() {
+    return this.hasMany(Session);
   },
 
   initialize: function() {
