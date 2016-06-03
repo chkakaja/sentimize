@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import RecordBox from './record-box.jsx';
 import RecordInstructions from './record-instructions.jsx';
 import Webcam from 'react-webcam';
 // import API from './API_interaction.js';
@@ -63,16 +62,7 @@ export default class RecordView extends React.Component {
         </div>
         <div className="pure-u-1-2">
           <RecordInstructions/>
-          <form method="post" action="https://api.sightcorp.com/api/detect/"
-                enctype="multipart/form-data">
-            <input type="text" name="app_key" value="565337c2e5dd42b69643c676e8927869"/>
-            <input type="text" name="client_id" value="d30d8accb4c84aa69e3af0eb878df592"/>
-            <input type="text" name="attribute" value="age,gender"/>
-            <input type="file" name="img"/>
-            <input type="submit"/>
-          </form>
         </div>
-
       </div>
     )
   }
