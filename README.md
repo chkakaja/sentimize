@@ -5,31 +5,19 @@ Automated sentiment reports for itnerviewers and itnerviewees.
 
 ## Table of Contents
 1. [Usage](#Usage)
-2. [Requirements](#Requirements)
-3. [Development](#Development)
-  1. [Installing Dependencies](#Dnstalling-Dependencies)
-  2. [Tasks](#Tasks)
-  3. [Stories in Ready](#https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)]
-  (https://waffle.io/chkakaja/sentimize)
-4. [Team](#Team)
-5. [Roadmap](#Roadmap)
-5. [Contributing](#Contributing)
+2. [Installation](#Installation)
+  1. [Installing Dependencies](#Installing-Dependencies)
+  2. [Setting up Environment Variables](#Environment-Variables)
+3. [Technologies](#Technologies)
+4. [Architecture](#Architecture)
+5. [Team](#Team)
+6. [Contributing](#Contributing)
+  3. [Stories in Ready](#https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)
 
 ## Usage
 > Some usage instructions
 
-## Requirements
-- Node
-- Express
-- Jade
-- OAuth Google
-- React Redux
-- MySQL
-- ORM - BookShelf/Knex
-- FaceScope API
-- Babel
-
-## Development
+## Installation
 
 ### Installing Dependencies
   From within the root directory:
@@ -40,15 +28,31 @@ Automated sentiment reports for itnerviewers and itnerviewees.
   bower install
   ```
 
-### Installing Dependencies
+## Technologies
+
+#### Front end
+- React
+- FaceScope API
+- Babel
+
+#### Back end
+- Node
+- Express
+- Jade
+- Bookshelf/Knex
+- MySQL
+
+#### Testing
+- Mocha
+- Chai
+- jsdom
+
+## Architecture
 
 ## Team
-  - Product Owner:            Chris Haug
+  - Product Owner:            Christian Haug
   - Scrum Master:             Jack Zhang
-  - Development Team Members: Chris Haug, Jack Zhang, Kani Munidasa, Kat Hao
-
-## Roadmap
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+  - Development Team Members: Christian Haug, Jack Zhang, Kani Munidasa, Katherine Hao
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
