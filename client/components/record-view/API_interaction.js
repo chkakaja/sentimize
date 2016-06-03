@@ -1,5 +1,5 @@
 import FACE from '../../lib/FACE-1.0.js';
-import env from '../../../env/client-config.js';
+import env from '../../../env/config.js';
 import $ from 'jquery';
 
 var app_key = env.FACE_APP_KEY;
@@ -18,7 +18,7 @@ var success = function(result) {
         console.log('error')
       },
       success: function(savedSnapshot) {
-        console.log(savedSnapshot);
+        console.log('SUCCESS from success', savedSnapshot);
       }
   });
 

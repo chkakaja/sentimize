@@ -71,11 +71,14 @@ module.exports = {
       sessionId: req.body.sessionId 
     }
 
+    
     if (data.mood.value === 'Positive') {
         snapshotObj.mood = data.mood.confidence
     } else {
          snapshotObj.mood = -(data.mood.confidence) 
     }
+    
+    console.log(snapshotObj);
 
     return new Snapshot(snapshotObj).save()
       .then(function(newSnapshot) {
