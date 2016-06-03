@@ -9,7 +9,7 @@ export default class HomeView extends React.Component {
   render() {
     return (
       <div className="view home-view">
-        <h4>HomeView!</h4>
+        <h4 className="home-view-welcome">Welcome to Sentimize</h4>
       </div>
     )
   }
