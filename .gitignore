@@ -8,6 +8,10 @@ npm-debug.log
 # Client Side Babel Compiled Files
 client/build/
 
+# Client Environment variables for APIs
+env/client-config.js
+
 # Environment Configuration, API Keys
 env/development.env
 env/production.env
+env/client-config.js

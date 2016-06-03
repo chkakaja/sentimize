@@ -23,7 +23,7 @@ app.use(util.ensureAuthenticated);
 // View Routes
 require('./routes/view-routes.js')(app);
 // API Routes
-// require('./routes/api-routes.js')(app);
+require('./routes/api-routes.js')(app);
 
 // Wildcard route
 app.get('/*', function(req, res) {
