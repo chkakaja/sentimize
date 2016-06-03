@@ -16,12 +16,26 @@ export default class RecordView extends React.Component {
   }
 
   startSession() {
-    $.post('/api/session',/*{SEND IN USER data if we have},*/ function(savedSession) {
-      console.log(savedSession, "comingback from server savedSession")
-      this.setState({
-        sessionId: savedSession.id
-      })
-    })
+    // $.post('/api/session',/*{SEND IN USER data if we have},*/ function(savedSession) {
+    //   console.log(savedSession, "comingback from server savedSession")
+    //   this.setState({
+    //     sessionId: savedSession.id
+    //   })
+    // })
+
+    $.ajax({
+      type: 'POST'
+      url: '/api/session',
+      error: function() {
+        console.log('error')
+       },
+      success: function(data) {
+        console.log(savedSession, "comingback from server savedSession")
+        this.setState({
+          sessionId: savedSession.id
+        })
+       },
+    });
 
   }
 
