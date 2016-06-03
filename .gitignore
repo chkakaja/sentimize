@@ -14,3 +14,4 @@ env/client-config.js
 # Environment Configuration, API Keys
 env/development.env
 env/production.env
+env/client-config.js

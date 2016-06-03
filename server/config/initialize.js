@@ -1,7 +1,7 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var jade = require('jade').__express;
-var db = require('./db');
+// var db = require('./db');
 
 
 module.exports = function(app, express) {

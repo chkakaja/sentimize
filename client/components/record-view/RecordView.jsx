@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import RecordInstructions from './record-instructions.jsx';
 import FACE from '../../lib/FACE-1.0.js';
 import API from './API_interaction.js';
+import $ from 'jquery';
 
 export default class RecordView extends React.Component {
   constructor(props) {
@@ -19,6 +20,20 @@ export default class RecordView extends React.Component {
       var snapshot = document.querySelector('#current-snapshot');
       API.sendDetectRequest(snapshot.src);
     }, 2000);
+
+    $.ajax({
+      type: 'POST',
+      url: '/api/session',
+      error: function() {
+        console.log('error')
+      },
+      success: function(savedSession) {
+        console.log(savedSession);
+        this.setState({
+          sessionId: savedSession.id
+        })
+      }.bind(this),
+    });
   }
 
   stopRecording() {
@@ -31,7 +46,6 @@ export default class RecordView extends React.Component {
         <div className="pure-u-2-3 record-box">
           <video id='webcam' className="pure-u-1-1" autoplay></video>
           <div className="button-bar">
-            <button className="screenshot-button" onClick={this.takeScreenshot.bind(this)}>Capture Screenshot</button>
             <button className="record-button" onClick={this.startRecording.bind(this)}>Record</button>
             <button className="stop-button" onClick={this.stopRecording.bind(this)}>Stop</button>
           </div>
