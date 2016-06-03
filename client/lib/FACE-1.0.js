@@ -13,8 +13,9 @@ var FACE = (function() {
     ajaxRequest.open( "POST", K_SERVICE_URL, true );
     ajaxRequest.onreadystatechange = ( function( tmpEvent ) {
       console.log( "FACE request completed. Response text : " + ajaxRequest.responseText );
+      console.log('req status', ajaxRequest.status);
       if( ajaxRequest.status == 200 ) {
-        jsonResponse = JSON.parse( ajaxRequest.responseText );
+        var jsonResponse = JSON.parse( ajaxRequest.responseText );
         if( jsonResponse.error_code && onFailureCallback ) {
           onFailureCallback( "F.A.C.E. request failed : " + jsonResponse.description );
         } else if( onSuccessCallback ) {
@@ -30,7 +31,7 @@ var FACE = (function() {
       }
     } );
     ajaxRequest.send( formData );
-    console.log( "FACE Sending request" );
+    console.log( "end of sendForm" );
   }
 
   return {

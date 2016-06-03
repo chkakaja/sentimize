@@ -40,11 +40,12 @@ export default class RecordView extends React.Component {
   }
 
   startSnapshot() {
-    var recordInterval = setInterval(function() {
+    var sessionId = this.state.sessionId;
+    // var recordInterval = setInterval(function() {
       FACE.webcam.takePicture('webcam', 'current-snapshot');
       var snapshot = document.querySelector('#current-snapshot');
-      API.sendDetectRequest(snapshot.src, this.state.sessionId);
-    }, 2000);
+      API.sendDetectRequest(snapshot.src, sessionId);
+    // }.bind(this), 2000);
   }
 
   stopRecording() {

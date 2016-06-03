@@ -51,7 +51,7 @@ module.exports = {
   "img_width": 640,
   "sessionId": sessionId
 }*/
-    console.log(req.body)
+    console.log(req.body, "THIS IS THE REQ BODY from controller")
     var data = req.body.persons[0] 
     
     var snapshotObj = {
@@ -82,7 +82,7 @@ module.exports = {
         res.status(201).send(newSnapshot);
       })
       .catch(function(err) {
-       console.log(err);
+       console.log(err, "THIS IS THE ERROR");
       });
   }
 }

@@ -4,11 +4,11 @@ import $ from 'jquery';
 
 var app_key = env.FACE_APP_KEY;
 var client_id = env.FACE_CLIENT_ID;
-var sessionId = null;
+var globalsessionId = null;
 
 var success = function(result) {
+  result.sessionId = globalsessionId
   console.log('data returned from API', result);
-  result.sessionId = sessionId
   
   $.ajax({
       type: 'POST',
@@ -31,7 +31,7 @@ var error = function(err) {
 export default {
   sendDetectRequest: function(imgData, sessionId) {
     var imgBlob = FACE.util.dataURItoBlob(imgData);
-    sessionId = sessionId;
+    globalsessionId = sessionId;
     FACE.sendImage(imgBlob, success, error, app_key, client_id);
 
   }
