@@ -14,7 +14,7 @@ db.knex.schema.hasTable('snapshots').then(function(exists){
       snapshot.string('ethnicity-v', 50);
       snapshot.integer('sadness');
       snapshot.integer('anger');
-      snapshot.integer('suprise');
+      snapshot.integer('surprise');
       snapshot.integer('fear');
       snapshot.integer('happiness');
       snapshot.integer('disgust');
