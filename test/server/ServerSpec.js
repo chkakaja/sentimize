@@ -4,10 +4,11 @@ var requestPromise = require('request-promise');
 var request = require('request');
 var expect = require('chai').expect;
 
+require('./setup.js');
 var db = require('./../../server/config/db');
 var appUrl = process.env.PROTOCOL + process.env.HOST + ':' + process.env.PORT;
 
-describe('Sentimize - Server', function() {
+describe('Express Server', function() {
 
   describe('Privileged Access', function(){
     beforeEach(function() {
@@ -15,7 +16,7 @@ describe('Sentimize - Server', function() {
       request(appUrl + '/logout', function(err, res, body) {});
     });
 
-    it('Redirects to login page when an unauthenticated user tries to access the main page', function(done) {
+    it('redirects to login page when an unauthenticated user tries to access the main page', function(done) {
       request(appUrl + '/', function(error, res, body) {
         // res comes from the request module, and may not follow express conventions
         expect(res.statusCode).to.equal(200);
