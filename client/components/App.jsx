@@ -6,6 +6,7 @@ import MainLayout from './main-layout/Mainlayout.jsx';
 import HomeView from './home-view/HomeView.jsx';
 import RecordView from './record-view/RecordView.jsx';
 import SessionsView from './sessions-view/SessionsView.jsx';
+import ReportView from './report-view/ReportView.jsx';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -19,6 +20,7 @@ export default class App extends React.Component {
           <IndexRoute component={HomeView} />
           <Route path="record" component={RecordView} />
           <Route path="sessions" component={SessionsView} />
+          <Route path="reports" component={ReportView} />
         </Route>
       </Router>
     )
