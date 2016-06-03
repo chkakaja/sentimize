@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import RecordBox from './record-box.jsx';
 import RecordInstructions from './record-instructions.jsx';
 import Webcam from 'react-webcam';
-import API from './API_interaction.js';
+// import API from './API_interaction.js';
 import $ from 'jquery';
 
 export default class RecordView extends React.Component {
@@ -24,7 +24,7 @@ export default class RecordView extends React.Component {
     // })
 
     $.ajax({
-      type: 'POST'
+      type: 'POST',
       url: '/api/session',
       error: function() {
         console.log('error')

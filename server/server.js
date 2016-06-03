@@ -18,12 +18,12 @@ require('./config/auth.js')(app, express, passport);
 require('./routes/auth-routes.js')(app, passport);
 
 //Authentication check currently commented out, uncomment line to re-activate
-// app.use(util.ensureAuthenticated);
+app.use(util.ensureAuthenticated);
 
 // View Routes
 require('./routes/view-routes.js')(app);
 // API Routes
-// require('./routes/api-routes.js')(app);
+require('./routes/api-routes.js')(app);
 
 // Wildcard route
 app.get('/*', function(req, res) {
