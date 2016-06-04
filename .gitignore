@@ -11,6 +11,9 @@ client/build/
 # Client Environment variables for APIs
 env/client-config.js
 
+# Istanbul Code Coverage Reports
+coverage/
+
 # Environment Configuration, API Keys
 env/development.env
 env/production.env

@@ -15,6 +15,8 @@
     "test-server": "mocha --bail --reporter spec test/server/",
     "test-client": "mocha --compilers js:babel-core/register --bail --reporter spec test/client/",
     "nyan": "mocha --compilers js:babel-core/register --bail --reporter nyan test/",
+    "coverage": "babel-node node_modules/istanbul/lib/cli cover _mocha -- --bail --reporter spec test && npm run open-coverage",
+    "open-coverage": "open coverage/lcov-report/index.html",
     "lint": "eslint --format 'node_modules/eslint-friendly-formatter' server client/components clients/index.jsx"
   },
   "dependencies": {
@@ -54,6 +56,7 @@
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.2.2",
     "eslint-plugin-react": "^5.1.1",
+    "istanbul": "^0.4.3",
     "jsdom": "^9.2.1",
     "mocha": "^2.5.0",
     "react-addons-test-utils": "^15.1.0",
