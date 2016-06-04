@@ -191,7 +191,7 @@ var FACE = (function() {
 
                     console.log('isImage', !FACE.util.isImage( img ));
                    // TODO : Diego : Do proper input checking (all functions)
-                   // if( !FACE.util.isImage( img ) || !callback || ( width <= 0 ) || ( height <= 0 ) ) {
+                   if( !FACE.util.isImage( img ) || !callback || ( width <= 0 ) || ( height <= 0 ) ) {
                       console.log(!callback);
                       console.log('wrong input check');
                      return false;
