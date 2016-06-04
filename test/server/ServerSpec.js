@@ -16,11 +16,11 @@ describe('Express Server', function() {
       request(appUrl + '/logout', function(err, res, body) {});
     });
 
-    it('redirects to login page when an unauthenticated user tries to access the main page', function(done) {
+    it('redirects to welcome page when an unauthenticated user tries to access the main page', function(done) {
       request(appUrl + '/', function(error, res, body) {
         // res comes from the request module, and may not follow express conventions
         expect(res.statusCode).to.equal(200);
-        expect(res.req.path).to.equal('/login');
+        expect(res.req.path).to.equal('/welcome');
         done();
       });
     });

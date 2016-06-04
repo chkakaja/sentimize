@@ -1,0 +1,23 @@
+extends ./base
+
+block styles
+  link(rel='stylesheet', href='style/welcome.css')
+
+block content
+  div.header
+    div.home-menu.pure-menu.pure-menu-horizontal.pure-menu-fixed
+      a.pure-menu-heading
+      ul.pure-menu-list
+        li.pure-menu-item.pure-menu-item-selected
+          a.pure-menu-link(href='#') Home
+        li.pure-menu-item
+          a.pure-menu-link(href='login') Login
+        li.pure-menu-item
+          a.pure-menu-link(href='signup') Signup
+
+  div.welcome-container
+    img.brain(src='/assets/brain2.jpg')
+    h1.title Sentimize
+    h4.subtitle Human emotion analysis during video recording
+    div.button-container
+      a.pure-button.start-button(href='login') Get started

@@ -3,6 +3,11 @@ var User = require('../models/UserModel.js');
 module.exports = function(app, passport) {
 
     // Pre-authentication routes
+  app.get('/welcome',
+  function(req, res) {
+    res.render('welcome');
+  });
+
   app.get('/login',
   function(req, res) {
     res.render('login');

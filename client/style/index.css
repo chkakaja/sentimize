@@ -15,7 +15,7 @@
 .pure-menu-heading {
   z-index: 1;
   position: absolute;
-  text-transform: none;
+  text-transform: lowercase;
   color: rgb(70, 130, 210);
   font-size: 45px;
   font-weight: 100;
@@ -27,7 +27,7 @@
   color: rgb(200, 230, 250);
 }
 
-.pure-menu {  
+.pure-menu {
   position: absolute;
   z-index: 0;
   margin: 40px 0;
