@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import { broserHistory } from 'react-router';
+import { browserHistory } from 'react-router';
 import $ from 'jquery';
 
 import FACE from './../../lib/FACE-1.0.js';
@@ -68,7 +68,7 @@ export default class RecordView extends React.Component {
 
   _createNewSnapshot(snapshotData) {
     let sessionId = this.state.sessionId;
-    
+
     $.ajax({
       method: 'POST',
       url: '/api/snapshot',
@@ -86,9 +86,10 @@ export default class RecordView extends React.Component {
     });
   }
 
-  _stopRecording() {
-    // Route to report view
+  _endSession() {
+    console.log('Session ended.');
     browserHistory.push('/reports/' + this.state.sessionId.toString());
+    FACE.webcam.stopPlaying('webcam');
   }
 
   render() {
@@ -98,7 +99,7 @@ export default class RecordView extends React.Component {
           <video id='webcam' className="pure-u-1-1" autoplay></video>
           <div className="button-bar">
             <button className="record-button" onClick={this._createNewSession.bind(this)}>Record</button>
-            <button className="stop-button" onClick={this._stopRecording.bind(this)}>Stop</button>
+            <button className="stop-button" onClick={this._endSession.bind(this)}>Stop</button>
           </div>
           <img id='current-snapshot' src=''/>
         </div>
