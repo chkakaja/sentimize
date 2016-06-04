@@ -71,11 +71,13 @@ export default class ChartComponent extends React.Component {
     $.ajax({
       type: 'GET',
       url: '/api/snapshot',
-      data: { id: this.props.params.sessionId },
+      data: { sessionId: this.props.params.sessionId },
       error: function(request, status, error) {
         console.error('error while fetching report data', error);
       },
       success: function(sessionData) {
+        console.log(sessionData);
+
         var sadness = 0;
         var disgust =0;
         var anger = 0;
@@ -103,6 +105,8 @@ export default class ChartComponent extends React.Component {
         expressionsData.datasets[0].data = [Math.floor(sadness/dataLength), Math.floor(disgust/dataLength), Math.floor(anger/dataLength),
           Math.floor(surprise/dataLength), Math.floor(fear/dataLength), Math.floor(happiness/dataLength)];
           this.setState({expressions: expressionsData, mood: moodData});
+
+          console.log(this.state);
       }.bind(this)
     })
   };
