@@ -1,15 +1,18 @@
 var Session = require('../models/SessionModel.js');
+var moment = require('moment');
 
 module.exports = {
   createSession: function(req, res) {
-     var sessionObj = {
-      userId: req.user.id 
-     }
+    // Dummy data for now in: title, description, subject, and duration
+    var sessionObj = {
+      userId: req.user.id,
+      title: 'Temporary Title',
+      description: 'Temporary Description',
+      subject: 'Temporary Subject',
+      date: moment().format('MMMM Do YYYY, h:mm a'),
+      duration: 'Temporary Duration'
+    }
 
-     console.log(req.user.id, 'REQ user Id')
-    //need to get current user
-      //maybe in req.body (if we sent it along with the post req)
-    //make sesssionObj with matching foreign key of userId
     return new Session(sessionObj).save()
       .then(function(newSession) {
         res.status(201).send(newSession);
