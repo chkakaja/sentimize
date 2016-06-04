@@ -67,9 +67,15 @@ export default class RecordView extends React.Component {
   }
 
   _createNewSnapshot(snapshotData) {
+    let sessionId = this.state.sessionId;
+    
     $.ajax({
-      method: 'GET',
+      method: 'POST',
       url: '/api/snapshot',
+      data: {
+        sessionId: sessionId,
+        snapshotData: snapshotData
+      },
       success: function(newSnapshot) {
         console.log('New snapshot created.', newSnapshot);
       },

@@ -2,7 +2,7 @@ var Snapshot = require('../models/SnapshotModel.js');
 
 module.exports = {
   createSnapshot: function(req, res) {
-    var data = req.body.persons[0] 
+    var data = req.body.snapshotData;
     
     var snapshotObj = {
       mood: null,
@@ -20,7 +20,6 @@ module.exports = {
       userId: req.user.id, 
       sessionId: req.body.sessionId 
     }
-
     
     if (data.mood.value === 'Positive') {
       snapshotObj.mood = data.mood.confidence
@@ -33,7 +32,7 @@ module.exports = {
         res.status(201).send(newSnapshot);
       })
       .catch(function(err) {
-       console.log(err, 'THIS IS THE ERROR');
+       console.error(err);
       });
   },
 
