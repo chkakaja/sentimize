@@ -11,7 +11,8 @@ export default class RecordView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sessionId: null
+      sessionId: null,
+      intervalId: null
     }
   }
 
@@ -39,10 +40,12 @@ export default class RecordView extends React.Component {
   }
 
   _startRecording() {
-    setInterval(function() {
+    var intervalId = setInterval(function() {
       FACE.webcam.takePicture('webcam', 'current-snapshot');
       this._takeSnapshot();
     }.bind(this), 3000);
+
+    this.setState({ intervalId: intervalId });
   }
 
   _takeSnapshot() {
@@ -88,8 +91,9 @@ export default class RecordView extends React.Component {
 
   _endSession() {
     console.log('Session ended.');
-    browserHistory.push('/reports/' + this.state.sessionId.toString());
+    clearInterval(this.state.intervalId);
     FACE.webcam.stopPlaying('webcam');
+    browserHistory.push('/reports/' + this.state.sessionId.toString());
   }
 
   render() {
