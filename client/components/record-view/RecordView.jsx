@@ -92,8 +92,12 @@ export default class RecordView extends React.Component {
   _endSession() {
     console.log('Session ended.');
     clearInterval(this.state.intervalId);
-    FACE.webcam.stopPlaying('webcam');
-    browserHistory.push('/reports/' + this.state.sessionId.toString());
+
+    // Wait 2 seconds after stop button is pressed
+    setTimeout(function() {
+      FACE.webcam.stopPlaying('webcam');
+      browserHistory.push('/reports/' + this.state.sessionId.toString());
+    }.bind(this), 2000)
   }
 
   render() {
