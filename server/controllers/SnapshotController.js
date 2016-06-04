@@ -45,7 +45,7 @@ module.exports = {
       sessionId: req.param('sessionId')
     }
 
-    Snapshot.forge(queryObj).fetchAll()
+    Snapshot.where(queryObj).fetchAll()
       .then(function(snapshots) {
         res.status(200).send(snapshots);
       })
