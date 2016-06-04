@@ -1,5 +1,6 @@
 import React from 'react';
 import SessionEntry from './SessionEntry.jsx';
+import { browserHistory } from 'react-router';
 
 import sessionDummyData from './../../../data/session-data.json';
 
@@ -19,7 +20,7 @@ export default class SessionsView extends React.Component {
           {this.state.sessionEntries.map(
             entry => (
               <div className="pure-u-1-3">
-                <SessionEntry key={entry.id} entry={entry}/>
+                <SessionEntry entry={entry} sessionId={entry.id} />
               </div>
             )
           )}
