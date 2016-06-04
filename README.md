@@ -18,7 +18,7 @@
 
 ## Usage
 
-  See [USAGE.md](USAGE.md) for screenshots and instructions for how to use the app.
+  See [USAGE.md](USAGE.md) for screenshots and instructions on how to use the app.
 
 ## Getting started
 
