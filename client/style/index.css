@@ -1,3 +1,6 @@
+@import url('./sessions-view.css');
+@import url('./recordview.css');
+
 .main-layout {
   /*Same as the height of the footer*/
   margin-bottom: 20px;
