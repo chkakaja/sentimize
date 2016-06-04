@@ -3,20 +3,20 @@ import SessionEntry from './SessionEntry.jsx';
 import { browserHistory } from 'react-router';
 import $ from 'jquery';
 
-import dummyData from './../../../data/session-data.json';
+// import dummyData from './../../../data/session-data.json';
 
 export default class SessionsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sessionEntries: dummyData
+      sessionEntries: []
     }
   }
 
   componentDidMount() {
     this._getSessions(function(data) {
       this.setState({ sessionEntries: data });
-    });
+    }.bind(this));
   }
 
   _getSessions(callback) {
