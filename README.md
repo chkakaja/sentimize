@@ -4,7 +4,7 @@
 
   Sentiment analysis during video recording for interviews and training.
 
-  TODO: add Screenshot
+  #####TODO: add Screenshot
 
 ## Table of Contents
 1. [Usage](#Usage)
@@ -41,7 +41,33 @@
 
 #### 3. Setup Environment Variables
 
+##### Server side setup
+
+  1. Copy and save the  ``` example.env ``` file in the env folder as ``` development.env ```.
+
+  2. Replace the port with your desired port and enter the login credentials for your MySQL server (make sure it is running)
+
+##### Client side setup
+
+  1. Create a free account on http://face.sightcorp.com/ and create a new application for a new App Key.
+  2. Copy and save the  ``` client-config.example.js ``` file in the env folder as ``` client-config.js ```.
+  3. Enter and save your Client ID and App Key in the ``` client-config.js ``` file.
+
 #### 4. Run the application
+
+  1. From within the root directory run the following command to make sure Browserify builds the bundle file and rebuilds on every change with Watchify:
+
+  ```sh
+  $ npm run bundle
+  ```
+
+  2. In a new terminal window run the following command to start the application:
+
+  ```sh
+  $ npm start
+  ```
+
+  After that open in your browser the localhost with your chosen port, e.g. ``` http://localhost:4568/ ``` to access the application.
 
 ## Technologies
 
@@ -94,9 +120,8 @@
 │   ├── /client/                # Client side tests
 │   ├── /server/                # Server side tests
 └── package.json                # List of 3rd party libraries and utilities to be installed
-└── package.json                # The list of 3rd party libraries and utilities
-└── package.json                # The list of 3rd party libraries and utilities
-└── package.json                # The list of 3rd party libraries and utilities
+└── .babelrc                    # Babel presets
+└── .eslintrc                   # ESLint settings
 ```
 
 ## Team
