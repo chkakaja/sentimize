@@ -32,7 +32,6 @@ export default class RecordView extends React.Component {
         console.log('error')
       },
       success: function(savedSession) {
-        console.log(savedSession);
         this.setState({
           sessionId: savedSession.id
         })

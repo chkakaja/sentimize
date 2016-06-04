@@ -20,7 +20,7 @@ import {Radar as RadarChart} from 'react-chartjs';
     datasetStroke: true,
     datasetStrokeWidth: 2,
     datasetFill: true,
-    legendTemplate: '<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+    // legendTemplate: '<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
   }
 
   const styles = {
@@ -29,8 +29,6 @@ import {Radar as RadarChart} from 'react-chartjs';
       padding: '15px'
     }
   }
-
-
 
 export default class ChartComponent extends React.Component {
 
@@ -48,7 +46,7 @@ export default class ChartComponent extends React.Component {
             pointStrokeColor: '#fff',
             pointHighlightFill: '#fff',
             pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [5, 15, 30, 45, 75, 10, -45, -15, 65, 80]
+            data: [5,5,5,5,5,5,5,5,5,5]
           }
         ]
       },
@@ -63,7 +61,7 @@ export default class ChartComponent extends React.Component {
             pointBorderColor: '#fff',
             pointHoverBackgroundColor: '#fff',
             pointHoverBorderColor: 'rgba(179,181,198,1)',
-            data: [10, 15, 10, 20, 35, 10]
+            data: [2.2,2,5.5,10,10,6]
           }
         ]
       }
@@ -71,7 +69,9 @@ export default class ChartComponent extends React.Component {
   }
   
   componentDidMount () {
-    console.log('Im here in ReportView ....' , this.props.params.sessionId);
+    console.log('Im here in ReportView ...' , this.props.params.sessionId);
+    console.log('moodData old', this.state.mood.datasets[0].data);
+    console.log('expressionsdata old', this.state.expressions.datasets[0].data);
     $.ajax({
       type: 'GET',
       url: '/api/snapshot',
@@ -80,8 +80,44 @@ export default class ChartComponent extends React.Component {
         console.log(request.responseText)
       },
       success: function(sessionData) {
-       console.log(sessionData, "FROM SUCCESS in COMP didmount")
-      }
+        var sadness = 0;
+        var disgust =0;
+        var anger = 0;
+        var surprise = 0;
+        var fear = 0;
+        var happiness = 0;
+        var dataLength = sessionData.length;
+        console.log(sessionData, "FROM SUCCESS in COMP didmount");
+
+
+        var moodData = Object.assign({}, this.state.mood);
+        var expressionsData = Object.assign({}, this.state.expressions);
+
+        console.log('state', this.state);
+
+        sessionData.forEach(ss => {
+          moodData.datasets[0].data.push(ss.mood);
+          expressionsData.datasets[0].data.pop();
+          expressionsData.datasets[0].data.pop();
+          expressionsData.datasets[0].data.push(5);
+          expressionsData.datasets[0].data.push(18);
+          sadness += ss.sadness;
+          disgust += ss.disgust;
+          anger += ss.anger;
+          surprise += ss.surprise;
+          fear += ss.fear;
+          happiness += ss.happiness;
+        })
+        // expressionsData.datasets[0].data = [Math.floor(sadness/dataLength), Math.floor(disgust/dataLength), Math.floor(anger/dataLength),
+          // Math.floor(surprise/dataLength), Math.floor(fear/dataLength), Math.floor(happiness/dataLength)];
+          // expressionsData.datasets[0].data = [1,2,3,4,5,6];
+          console.log('expressionsdata old2', this.state.expressions.datasets[0].data);
+          console.log("expressionData new in new dataset", expressionsData.datasets[0].data);
+          console.log('moodData new in state', this.state.mood.datasets[0].data);
+          console.log('moodData new in new dataset', moodData.datasets[0].data);
+          this.setState({mood: moodData, expressions: expressionsData});
+          console.log('expressionsdata new in state', this.state.expressions.datasets[0].data);
+      }.bind(this)
     })
   };
 
