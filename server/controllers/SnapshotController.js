@@ -3,54 +3,6 @@ var Snapshot = require('../models/SnapshotModel.js');
 
 module.exports = {
   createSnapshot: function(req, res) {
-    /*{
-  "persons": [
-    {
-      "mood": {
-        "confidence": 27,
-        "value": "Positive"
-      },
-      "gender": {
-        "confidence": 71,
-        "value": "Male"
-      },
-      "age": {
-        "range": 5,
-        "value": 12
-      },
-      "expressions": {
-        "sadness": {
-          "value": 5
-        },
-        "neutral": {
-          "value": 0
-        },
-        "disgust": {
-          "value": 2
-        },
-        "anger": {
-          "value": 2
-        },
-        "surprise": {
-          "value": 2
-        },
-        "fear": {
-          "value": 3
-        },
-        "happiness": {
-          "value": 0
-        }
-      },
-      "ethnicity": {
-        "confidence": 41,
-        "value": "Caucasian"
-      }
-    }
-  ],
-  "img_height": 480,
-  "img_width": 640,
-  "sessionId": sessionId
-}*/
     console.log(req.body, 'THIS IS THE REQ BODY from controller')
     var data = req.body.persons[0] 
     
@@ -78,7 +30,6 @@ module.exports = {
          snapshotObj.mood = -(data.mood.confidence) 
     }
     
-    console.log(snapshotObj);
 
     return new Snapshot(snapshotObj).save()
       .then(function(newSnapshot) {
@@ -87,5 +38,22 @@ module.exports = {
       .catch(function(err) {
        console.log(err, 'THIS IS THE ERROR');
       });
+  },
+
+  getSession: function(req, res) {
+    // sessionID is available in req.body
+    var sessionId = req.param('id');
+    Snapshot.where({sessionId: sessionId}).fetchAll()
+      .then(function(snapshots) {
+        if(!snapshots) {
+          res.status(400)
+        } else {
+          console.log('found snapshots' , snapshots)
+          res.status(200).send(snapshots)
+        }
+      })
+      .catch(function(err) {
+        console.log(err)
+    })
   }
 }

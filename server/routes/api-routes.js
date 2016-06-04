@@ -17,4 +17,5 @@ var SnapshotController = require('./../controllers/SnapshotController.js');
 module.exports = function(app, passport) {
   app.post('/api/session', SessionController.createSession);
   app.post('/api/snapshot', SnapshotController.createSnapshot);
+  app.get('/api/snapshot', SnapshotController.getSession);
 };
