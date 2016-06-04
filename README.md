@@ -2,10 +2,7 @@
 [![Stories in Ready](https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)](https://waffle.io/chkakaja/sentimize)
 # Sentimize
 
-  Sentiment analysis during video recording for interviews and training.
-
-  <b>TODO: add additional Screenshots </b>
-  ![SentimizeLogin](https://cloud.githubusercontent.com/assets/10008938/15796107/62099d06-29ad-11e6-9319-1d69b97c8777.png)
+  Sentimize provides human emotion analysis during video recording for interviews and training.
 
 ## Table of Contents
 1. [Usage](#Usage)
@@ -20,8 +17,8 @@
 6. [Contributing](#Contributing)
 
 ## Usage
-> Some usage instructions
-<b> to be added </b>
+
+  See [USAGE.md](USAGE.md) for screenshots and instructions for how to use the app.
 
 ## Getting started
 
@@ -95,8 +92,8 @@
 ## Architecture
 ![sentimize](https://cloud.githubusercontent.com/assets/10008938/15795587/c0bfd19a-29a7-11e6-9402-de7dabdf1526.png)
 
-### Database Schema
-<b> to be added </b>
+<!-- ### Database Schema
+<b> to be added </b> -->
 
 ## Directory Layout
 ```
@@ -110,9 +107,9 @@
 │     ├── /record-view/         # Record view components
 │     ├── /report-view/         # Reporting view components
 │     ├── /App.jsx/             # Main React App
-│   ├── /lib/                   # Static pages like About Us, Privacy Policy etc.
-│   ├── /style/                 # GraphQL server schema and data models
-│   ├── /index.js               # GraphQL server schema and data models
+│   ├── /lib/                   # Lib files, e.g. from FACE API
+│   ├── /style/                 # CSS Style files
+│   ├── /index.jsx              # Index file to attach React to DOM
 ├── /server/                    # Server source code
 │   ├── /config/                # Initial server config files
 │   ├── /controllers/           # Controllers for database interaction
@@ -136,5 +133,3 @@
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
-
-[Stories in Ready](#https://badge.waffle.io/chkakaja/sentimize.png?label=ready&title=Ready)
