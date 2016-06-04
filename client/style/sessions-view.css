@@ -1,0 +1,9 @@
+.sessions-view-title {
+  font-weight: 300;
+  font-size: 40px;
+  margin: 40px 0 50px;
+}
+
+.session-entry-block {
+  height: 200px;
+}

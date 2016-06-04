@@ -7,15 +7,23 @@ export default class SessionsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      testEntries: sessionDummyData
+      sessionEntries: sessionDummyData
     }
   }
 
   render() {
     return (
       <div className="view sessions-view">
-        <h4 className="sessions-view-title">All Recorded Sessions</h4>
-        {this.state.testEntries.map(entry => <SessionEntry key={entry.id} entry={entry}/>)}
+        <h4 className="sessions-view-title">My Sessions</h4>
+        <div className="pure-g">
+          {this.state.sessionEntries.map(
+            entry => (
+              <div className="pure-u-1-3">
+                <SessionEntry key={entry.id} entry={entry}/>
+              </div>
+            )
+          )}
+        </div>
       </div>
     )
   }
