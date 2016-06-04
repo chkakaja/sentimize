@@ -83,6 +83,10 @@ export default class ChartComponent extends React.Component {
         var fear = 0;
         var happiness = 0;
         var dataLength = sessionData.length;
+        var moodLabel = [];
+        for (var i=1; i <= dataLength; i++) {
+          moodLabel.push(i);
+        }
         var moodData = Object.assign({}, this.state.mood);
         var expressionsData = Object.assign({}, this.state.expressions);
 
@@ -95,6 +99,7 @@ export default class ChartComponent extends React.Component {
           fear += ss.fear;
           happiness += ss.happiness;
         })
+        moodData.labels = moodLabel;
         expressionsData.datasets[0].data = [Math.floor(sadness/dataLength), Math.floor(disgust/dataLength), Math.floor(anger/dataLength),
           Math.floor(surprise/dataLength), Math.floor(fear/dataLength), Math.floor(happiness/dataLength)];
           this.setState({expressions: expressionsData, mood: moodData});
