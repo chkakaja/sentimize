@@ -1,10 +1,12 @@
-var Session = require('../models/SessionModel.js');
 var Snapshot = require('../models/SnapshotModel.js');
 
 module.exports = {
   createSnapshot: function(req, res) {
-    console.log(req.body, 'THIS IS THE REQ BODY from controller')
-    var data = req.body.persons[0] 
+    var data = req.body.snapshotData;
+
+    if (data.gender === undefined) {
+      res.send(400).send('Snapshot failed to produce usable data.');
+    }
     
     var snapshotObj = {
       mood: null,
@@ -22,38 +24,33 @@ module.exports = {
       userId: req.user.id, 
       sessionId: req.body.sessionId 
     }
-
     
     if (data.mood.value === 'Positive') {
-        snapshotObj.mood = data.mood.confidence
+      snapshotObj.mood = data.mood.confidence
     } else {
-         snapshotObj.mood = -(data.mood.confidence) 
+      snapshotObj.mood = -(data.mood.confidence) 
     }
-    
 
     return new Snapshot(snapshotObj).save()
       .then(function(newSnapshot) {
         res.status(201).send(newSnapshot);
       })
       .catch(function(err) {
-       console.log(err, 'THIS IS THE ERROR');
+       console.error(err);
       });
   },
 
-  getSession: function(req, res) {
-    // sessionID is available in req.body
-    var sessionId = req.param('id');
-    Snapshot.where({sessionId: sessionId}).fetchAll()
+  getSnapshots: function(req, res) {
+    var queryObj = {
+      sessionId: req.param('sessionId')
+    }
+
+    Snapshot.forge(queryObj).fetchAll()
       .then(function(snapshots) {
-        if(!snapshots) {
-          res.status(400)
-        } else {
-          console.log('found snapshots' , snapshots)
-          res.status(200).send(snapshots)
-        }
+        res.status(200).send(snapshots);
       })
       .catch(function(err) {
-        console.log(err)
-    })
+        console.error(err);
+      });
   }
 }

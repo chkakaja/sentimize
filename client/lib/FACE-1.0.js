@@ -17,8 +17,6 @@ var FACE = (function() {
         if( jsonResponse.error_code && onFailureCallback ) {
           onFailureCallback( "F.A.C.E. request failed : " + jsonResponse.description );
         } else if( onSuccessCallback ) {
-        // Successfull transaction
-          console.log( "FACE successfull request" );
           onSuccessCallback( JSON.parse( ajaxRequest.responseText ) );
         }
       } else {
@@ -29,7 +27,7 @@ var FACE = (function() {
       }
     } );
     ajaxRequest.send( formData );
-    console.log( "end of sendForm" );
+    // console.log( "end of sendForm" );
   }
 
   return {
