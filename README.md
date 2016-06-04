@@ -4,7 +4,8 @@
 
   Sentiment analysis during video recording for interviews and training.
 
-  #####TODO: add Screenshot
+  <b>TODO: add additional Screenshots </b>
+  ![SentimizeLogin](https://cloud.githubusercontent.com/assets/10008938/15796107/62099d06-29ad-11e6-9319-1d69b97c8777.png)
 
 ## Table of Contents
 1. [Usage](#Usage)
@@ -20,6 +21,7 @@
 
 ## Usage
 > Some usage instructions
+<b> to be added </b>
 
 ## Getting started
 
@@ -92,6 +94,9 @@
 
 ## Architecture
 ![sentimize](https://cloud.githubusercontent.com/assets/10008938/15795587/c0bfd19a-29a7-11e6-9402-de7dabdf1526.png)
+
+### Database Schema
+<b> to be added </b>
 
 ## Directory Layout
 ```
