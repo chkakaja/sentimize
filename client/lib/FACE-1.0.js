@@ -12,8 +12,6 @@ var FACE = (function() {
     var ajaxRequest = new XMLHttpRequest();
     ajaxRequest.open( "POST", K_SERVICE_URL, true );
     ajaxRequest.onreadystatechange = ( function( tmpEvent ) {
-      console.log( "FACE request completed. Response text : " + ajaxRequest.responseText );
-      console.log('req status', ajaxRequest.status);
       if( ajaxRequest.status == 200 ) {
         var jsonResponse = JSON.parse( ajaxRequest.responseText );
         if( jsonResponse.error_code && onFailureCallback ) {
@@ -194,10 +192,10 @@ var FACE = (function() {
                     console.log('isImage', !FACE.util.isImage( img ));
                    // TODO : Diego : Do proper input checking (all functions)
                    // if( !FACE.util.isImage( img ) || !callback || ( width <= 0 ) || ( height <= 0 ) ) {
-                   //    console.log(!callback);
-                   //    console.log('wrong input check');
-                   //   return false;
-                   // }
+                      console.log(!callback);
+                      console.log('wrong input check');
+                     return false;
+                   }
 
                    // Prepare the canvas
                    var canvas = document.createElement( 'canvas' );
@@ -242,10 +240,10 @@ var FACE = (function() {
                      return false;
                    }
 
-                   // if( !file || !( file instanceof Blob ) || !callback ) {
-                   //    console.log('exit base64 read', !file, !( file instanceof Blob ), !callback);
-                   //   return false;
-                   // }
+                   if( !file || !( file instanceof Blob ) || !callback ) {
+                      console.log('exit base64 read', !file, !( file instanceof Blob ), !callback);
+                     return false;
+                   }
 
                    var reader = new FileReader();
                    if( callback ) {
