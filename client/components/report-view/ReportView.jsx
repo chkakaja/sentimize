@@ -4,31 +4,30 @@ import ReactDom from 'react-dom';
 import {Line as LineChart} from 'react-chartjs';
 import {Radar as RadarChart} from 'react-chartjs';
 
+const options = {
+  scaleShowGridLines: true,
+  scaleGridLineColor: 'rgba(0,0,0,.05)',
+  scaleGridLineWidth: 1,
+  scaleShowHorizontalLines: true,
+  scaleShowVerticalLines: true,
+  bezierCurve: true,
+  bezierCurveTension: 0.4,
+  pointDot: true,
+  pointDotRadius: 4,
+  pointDotStrokeWidth: 1,
+  pointHitDetectionRadius: 20,
+  datasetStroke: true,
+  datasetStrokeWidth: 2,
+  datasetFill: true,
+  legendTemplate: '<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+}
 
-  const options = {
-    scaleShowGridLines: true,
-    scaleGridLineColor: 'rgba(0,0,0,.05)',
-    scaleGridLineWidth: 1,
-    scaleShowHorizontalLines: true,
-    scaleShowVerticalLines: true,
-    bezierCurve: true,
-    bezierCurveTension: 0.4,
-    pointDot: true,
-    pointDotRadius: 4,
-    pointDotStrokeWidth: 1,
-    pointHitDetectionRadius: 20,
-    datasetStroke: true,
-    datasetStrokeWidth: 2,
-    datasetFill: true,
-    // legendTemplate: '<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+const styles = {
+  graphContainer: {
+    border: '1px solid black',
+    padding: '15px'
   }
-
-  const styles = {
-    graphContainer: {
-      border: '1px solid black',
-      padding: '15px'
-    }
-  }
+}
 
 export default class ChartComponent extends React.Component {
 
@@ -53,7 +52,7 @@ export default class ChartComponent extends React.Component {
       mood: {
         labels: [],
         datasets: [
-          { 
+          {
             label: 'Mood TimeLine',
             fillColor: 'rgba(220,220,220,0.2)',
             strokeColor: 'rgba(220,220,220,1)',
@@ -65,19 +64,16 @@ export default class ChartComponent extends React.Component {
           }
         ]
       }
-    }   
+    }
   }
-  
+
   componentDidMount () {
-    // console.log('Im here in ReportView ...' , this.props.params.sessionId);
-    // console.log('moodData old', this.state.mood.datasets[0].data);
-    // console.log('expressionsdata old', this.state.expressions.datasets[0].data);
     $.ajax({
       type: 'GET',
       url: '/api/snapshot',
       data: { id: this.props.params.sessionId },
       error: function(request, status, error) {
-        // console.log(request.responseText)
+        console.error('error while fetching report data', error);
       },
       success: function(sessionData) {
         var sadness = 0;
@@ -87,20 +83,11 @@ export default class ChartComponent extends React.Component {
         var fear = 0;
         var happiness = 0;
         var dataLength = sessionData.length;
-        // console.log(sessionData, 'FROM SUCCESS in COMP didmount');
-
-
         var moodData = Object.assign({}, this.state.mood);
         var expressionsData = Object.assign({}, this.state.expressions);
 
-        // console.log('state', this.state);
-
         sessionData.forEach(ss => {
           moodData.datasets[0].data.push(ss.mood);
-          // expressionsData.datasets[0].data.pop();
-          // expressionsData.datasets[0].data.pop();
-          // expressionsData.datasets[0].data.push(5);
-          // expressionsData.datasets[0].data.push(18);
           sadness += ss.sadness;
           disgust += ss.disgust;
           anger += ss.anger;
@@ -110,17 +97,7 @@ export default class ChartComponent extends React.Component {
         })
         expressionsData.datasets[0].data = [Math.floor(sadness/dataLength), Math.floor(disgust/dataLength), Math.floor(anger/dataLength),
           Math.floor(surprise/dataLength), Math.floor(fear/dataLength), Math.floor(happiness/dataLength)];
-          // expressionsData.datasets[0].data = [1,2,3,4,5,6];
-          // console.log('expressionsdata old2', this.state.expressions.datasets[0].data);
-          // console.log('expressionData new in new dataset', expressionsData.datasets[0].data);
-          // console.log('moodData new in state', this.state.mood.datasets[0].data);
-          // console.log('moodData new in new dataset', moodData.datasets[0].data);
-
           this.setState({expressions: expressionsData, mood: moodData});
-
-          console.log('The new Prop in state', this.state);
-          // console.log('moodData new in state', this.state.mood.datasets[0].data);
-          // console.log('expressionsdata new in state', this.state.expressions.datasets[0].data);
       }.bind(this)
     })
   };
