@@ -20,5 +20,20 @@ module.exports = {
       .catch(function(err) {
        console.log(err);
       });
+  },
+
+  getSessions: function(req, res) {
+    var queryObj = {
+      userId: req.user.id
+    }
+
+    Session.forge(queryObj).fetchAll()
+      .then(function(sessions) {
+        // console.log(sessions);
+        res.status(200).send(sessions);
+      })
+      .catch(function(err) {
+        console.error(err);
+      })
   }
 }

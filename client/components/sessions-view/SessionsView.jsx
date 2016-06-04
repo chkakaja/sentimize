@@ -1,15 +1,34 @@
 import React from 'react';
 import SessionEntry from './SessionEntry.jsx';
 import { browserHistory } from 'react-router';
-
-import sessionDummyData from './../../../data/session-data.json';
+import $ from 'jquery';
 
 export default class SessionsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sessionEntries: sessionDummyData
+      sessionEntries: []
     }
+  }
+
+  componentDidMount() {
+    this._getSessions(function(data) {
+      this.setState({ sessionEntries: data });
+    });
+  }
+
+  _getSessions(callback) {
+    $.ajax({
+      method: 'GET',
+      url: '/api/session',
+      success: function(data) {
+        callback(data);
+      },
+      error: function(error) {
+        console.error('_getSessions Error:', error);
+      },
+      dataType: 'json'
+    });
   }
 
   render() {

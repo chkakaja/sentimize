@@ -13,8 +13,8 @@ var SnapshotController = require('./../controllers/SnapshotController.js');
 //   }
 // })
 
-
 module.exports = function(app, passport) {
+  app.get('/api/session',  SessionController.getSessions);
   app.post('/api/session', SessionController.createSession);
   app.post('/api/snapshot', SnapshotController.createSnapshot);
 };
