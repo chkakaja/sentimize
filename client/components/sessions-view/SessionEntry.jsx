@@ -1,16 +1,33 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
-export default (props) => (
-  <div className="session-entry">
-    <img src='http://img.ifcdn.com/images/809939206545a9965086a346d92f688988e487b79577a2914696479d32604ca2_1.jpg'></img>
-    <div className="session-entry-data">
-      <h4> {props.entry.title} </h4>
-      <div>
-        {props.entry.description}
+export default class SessionEntry extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  showSessionReport() {
+    browserHistory.push('/reports/' + this.props.sessionId.toString());
+  }
+
+  render() {
+    return (
+      <div className="session-entry-block" onClick={this.showSessionReport.bind(this)}>
+        <div className="session-entry-title">{this.props.entry.title}</div>
+        <div className="session-entry-description">{this.props.entry.description}</div>
+        <div className="session-entry-subject">
+          <span className="label">Subject: </span>
+          <span className="value">{this.props.entry.subject}</span>
+        </div>
+        <div className="session-entry-date">
+          <span className="label">Date: </span>
+          <span className="value">{this.props.entry.date}</span>
+        </div>
+        <div className="session-entry-duration">
+          <span className="label">Duration: </span>
+          <span className="value">{this.props.entry.duration}</span>
+        </div>
       </div>
-      <div>
-        {props.entry.graph}
-      </div>
-    </div>
-  </div>
-);
+    )
+  }
+};

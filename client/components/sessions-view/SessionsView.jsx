@@ -1,55 +1,51 @@
 import React from 'react';
 import SessionEntry from './SessionEntry.jsx';
+import { browserHistory } from 'react-router';
+import $ from 'jquery';
+
+import dummyData from './../../../data/session-data.json';
 
 export default class SessionsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      testEntries: [
-        {
-          title: 'Pikachu',
-          description: 'Pokemon lala some words go here',
-          graph: 'graph1'
-        },
-        {
-          title: 'Entry2',
-          description: 'content2',
-          graph: 'graph2'
-        },
-        {
-          title: 'Entry3',
-          description: 'content3',
-          graph: 'graph3'
-        },
-        {
-          title: 'Entry1',
-          description: 'content1',
-          graph: 'graph1'
-        },
-        {
-          title: 'Entry2',
-          description: 'content2',
-          graph: 'graph2'
-        },
-        {
-          title: 'Entry1',
-          description: 'content1',
-          graph: 'graph1'
-        },
-        {
-          title: 'Entry2',
-          description: 'content2',
-          graph: 'graph2'
-        }
-      ]
+      sessionEntries: dummyData
     }
+  }
+
+  componentDidMount() {
+    this._getSessions(function(data) {
+      this.setState({ sessionEntries: data });
+    });
+  }
+
+  _getSessions(callback) {
+    $.ajax({
+      method: 'GET',
+      url: '/api/session',
+      success: function(data) {
+        callback(data);
+      },
+      error: function(error) {
+        console.error('_getSessions Error:', error);
+      },
+      dataType: 'json'
+    });
   }
 
   render() {
     return (
       <div className="view sessions-view">
-        <h4>Sessions View!</h4>
-          {this.state.testEntries.map(entry => <SessionEntry entry={entry}/>)}
+        <h4 className="sessions-view-title">My Sessions</h4>
+        <div className="pure-g">
+          {this.state.sessionEntries.map(
+            entry => (
+              <div className="pure-u-1-3">
+                <SessionEntry entry={entry} sessionId={entry.id} />
+              </div>
+            )
+          )}
+        </div>
       </div>
     )
   }

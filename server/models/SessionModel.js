@@ -7,6 +7,11 @@ db.knex.schema.hasTable('sessions').then(function(exists) {
     db.knex.schema.createTable('sessions', function(session) {
       session.increments('id').primary();
       session.integer('userId');
+      session.string('title');
+      session.string('description');
+      session.string('subject');
+      session.string('date');
+      session.string('duration');
       session.timestamps();
     }).then(function() {
       console.log('Session Table created');

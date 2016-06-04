@@ -121,6 +121,7 @@
 ├── /test/                      # Server and client side tests
 │   ├── /client/                # Client side tests
 │   ├── /server/                # Server side tests
+|   ├── /data/                  # Holds seed & dummy data
 └── package.json                # List of 3rd party libraries and utilities to be installed
 └── .babelrc                    # Babel presets
 └── .eslintrc                   # ESLint settings
