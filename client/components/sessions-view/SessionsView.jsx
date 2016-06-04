@@ -7,6 +7,7 @@ export default class SessionsView extends React.Component {
     this.state = {
       testEntries: [
         {
+          id: 25,
           title: 'Pikachu',
           subject: 'Jack Zhang',
           description: 'A short description describing this session',
@@ -14,6 +15,7 @@ export default class SessionsView extends React.Component {
           duration: '0:03:58'
         },
         {
+          id: 3,
           title: 'Longer Title',
           subject: 'Chris Haug',
           description: 'Short content',
@@ -21,6 +23,7 @@ export default class SessionsView extends React.Component {
           duration: '0:00:25'
         },
         {
+          id: 17,
           title: 'My recording session!',
           subject: 'Marcus Phillips',
           description: 'A long description describing this session A long description describing this session',
@@ -28,6 +31,7 @@ export default class SessionsView extends React.Component {
           duration: '0:00:25'
         },
         {
+          id: 20,
           title: 'Hack Reactor Interview',
           subject: 'A person',
           description: 'A short description describing this session',
@@ -35,6 +39,7 @@ export default class SessionsView extends React.Component {
           duration: '0:03:58'
         },
         {
+          id: 14,
           title: 'Test',
           subject: 'Kani Muni',
           description: 'Some content',
@@ -49,7 +54,7 @@ export default class SessionsView extends React.Component {
     return (
       <div className="view sessions-view">
         <h4 className="sessions-view-title">All Recorded Sessions</h4>
-        {this.state.testEntries.map(entry => <SessionEntry entry={entry}/>)}
+        {this.state.testEntries.map(entry => <SessionEntry key={entry.id} entry={entry}/>)}
       </div>
     )
   }
