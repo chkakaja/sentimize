@@ -4,6 +4,10 @@ import RecordInstructions from './record-instructions.jsx';
 import FACE from '../../lib/FACE-1.0.js';
 import API from './API_interaction.js';
 import $ from 'jquery';
+import reportView from '../report-view/ReportView.jsx';
+import {Router, browserHistory} from 'react-router';
+
+var recordInterval;
 
 export default class RecordView extends React.Component {
   constructor(props) {
@@ -28,7 +32,6 @@ export default class RecordView extends React.Component {
         console.log('error')
       },
       success: function(savedSession) {
-        console.log(savedSession);
         this.setState({
           sessionId: savedSession.id
         })
@@ -41,7 +44,7 @@ export default class RecordView extends React.Component {
 
   startSnapshot() {
     var sessionId = this.state.sessionId;
-    var recordInterval = setInterval(function() {
+    recordInterval = setInterval(function() {
       FACE.webcam.takePicture('webcam', 'current-snapshot');
       var snapshot = document.querySelector('#current-snapshot');
       API.sendDetectRequest(snapshot.src, sessionId);
@@ -50,6 +53,8 @@ export default class RecordView extends React.Component {
 
   stopRecording() {
     clearInterval(recordInterval);
+    //sends to report view, and pass along this.state.sessionId
+    browserHistory.push('/reports/' + this.state.sessionId)
   }
 
   render() {

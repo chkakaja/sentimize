@@ -8,7 +8,6 @@ var globalsessionId = null;
 
 var success = function(result) {
   result.sessionId = globalsessionId
-  console.log('data returned from API', result);
 
   $.ajax({
       type: 'POST',
@@ -18,7 +17,6 @@ var success = function(result) {
         console.log('error')
       },
       success: function(savedSnapshot) {
-        console.log('SUCCESS from success', savedSnapshot);
       }
   });
 
