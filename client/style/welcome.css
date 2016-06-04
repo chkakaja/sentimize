@@ -1,0 +1,68 @@
+body {
+  background-color: #000000;
+  color: rgb(200, 220, 235);
+}
+
+.home-menu {
+    padding: 0.5em;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+.home-menu {
+    background: #000000;
+}
+.pure-menu.pure-menu-fixed {
+    border-bottom: none;
+    z-index: 4;
+}
+
+.home-menu .pure-menu-heading {
+    font-weight: 400;
+    font-size: 120%;
+}
+
+.home-menu .pure-menu-selected a {
+    color: white;
+}
+
+.home-menu li a:hover,
+.home-menu li a:focus {
+    background: none;
+    border: none;
+    color: #AECFE5;
+}
+
+.brain {
+  width: 300px
+}
+
+h1.title {
+  text-transform: lowercase;
+  font-size: 75px;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: rgb(200, 220, 235);
+}
+
+.subtitle {
+  font-weight: 200;
+}
+
+div.welcome-container {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+}
+
+a.start-button {
+  margin: 15px 0;
+  width: 290px;
+  padding: 18px 20px;
+  background-color: rgb(70, 130, 210);
+  color: rgb(200, 220, 235);
+}
