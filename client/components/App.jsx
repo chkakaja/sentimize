@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
-import MainLayout from './main-layout/Mainlayout.jsx';
+import MainLayout from './main-layout/MainLayout.jsx';
 import HomeView from './home-view/HomeView.jsx';
 import RecordView from './record-view/RecordView.jsx';
 import SessionsView from './sessions-view/SessionsView.jsx';
