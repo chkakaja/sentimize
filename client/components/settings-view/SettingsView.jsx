@@ -4,22 +4,14 @@ import $ from 'jquery';
 export default class SettingsView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      password: ''
-    }
   }
 
   componentWillMount() {
     this._getCurrentUser(function(currentUser) {
-      this.setState({
-        firstName: currentUser.firstName,
-        lastName: currentUser.lastName,
-        email: currentUser.email,
-        password: currentUser.password
-      })
+      this.refs.firstName.value = currentUser.firstName;
+      this.refs.lastName.value = currentUser.lastName;
+      this.refs.email.value = currentUser.email;
+      this.refs.password.value = currentUser.password;
     }.bind(this));
   }
 
@@ -45,19 +37,19 @@ export default class SettingsView extends React.Component {
         <form method="PUT" action="/api/users">
           <div className="update-form-label">First Name</div>
           <div className="update-form-input firstname">
-            <input type="text" name="firstname" placeholder="Update First Name" value={this.state.firstName} required></input>
+            <input type="text" name="firstname" placeholder="Update First Name" ref="firstName" required></input>
           </div>
           <div className="update-form-label">Last Name</div>
           <div className="update-form-input lastname">
-            <input type="text" name="lastname" placeholder="Update Last Name" value={this.state.lastName} required></input>
+            <input type="text" name="lastname" placeholder="Update Last Name" ref="lastName" required></input>
           </div>
           <div className="update-form-label">Email</div>
           <div className="update-form-input Email">
-            <input type="text" name="Email" placeholder="Update Email" value={this.state.email} required></input>
+            <input type="text" name="Email" placeholder="Update Email" ref="email" required></input>
           </div>
           <div className="update-form-label">Password</div>
           <div className="update-form-input password">
-            <input type="password" name="password" placeholder="New Password" required></input>
+            <input type="password" name="password" placeholder="New Password" ref="password" required></input>
           </div>
           <button className="update-button">Update Profile</button>
         </form>
