@@ -54,7 +54,7 @@
 
 #### 4. Run the application
 
-  1. From within the root directory run the following command to make sure Browserify builds the bundle file and rebuilds on every change with Watchify:
+  1. Create a build folder within client/build. From within the root directory run the following command to make sure Browserify builds the bundle file and rebuilds on every change with Watchify:
 
   ```sh
   $ npm run bundle
