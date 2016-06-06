@@ -14,7 +14,8 @@ export default class RecordView extends React.Component {
     this.state = {
       sessionId: null,
       intervalId: null,
-      showQuestions: false
+      showQuestions: false,
+      startTime: undefined
     }
   }
 
@@ -61,7 +62,7 @@ export default class RecordView extends React.Component {
       this._takeSnapshot();
     }.bind(this), 3000);
 
-    this.setState({ intervalId: intervalId });
+    this.setState({ intervalId: intervalId, startTime: Date.now() });
   }
 
   _takeSnapshot() {
@@ -108,12 +109,41 @@ export default class RecordView extends React.Component {
   _endSession() {
     console.log('Session ended.');
     clearInterval(this.state.intervalId);
+    this._calcDuration()
 
     // Wait 2 seconds after stop button is pressed
     setTimeout(function() {
       FACE.webcam.stopPlaying('webcam');
       browserHistory.push('/reports/' + this.state.sessionId.toString());
     }.bind(this), 2000)
+  }
+
+  _calcDuration () {
+    let sessionId = this.state.sessionId;
+
+    if (this.state.startTime !== undefined) {
+        var endTime = Date.now();
+        var difference = endTime - this.state.startTime;
+        difference = Math.round(difference/1000)
+    }
+    console.log(difference, 'this is the difference in seconds')
+    //create ajax request to update /api/sessions of sessionId
+    $.ajax({
+      type: 'POST',
+      url: '/api/session/update',
+      data: { 
+        difference: difference,
+        sessionId: sessionId
+      },
+      success: function(updatedSession) {
+        console.log(updatedSession, 'UPDATED DURATION')
+      }.bind(this),
+      error: function(error) {
+        console.error('_calcDuration error', error)
+      },
+      dataType: 'json'
+    });
+
   }
 
   render() {

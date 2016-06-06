@@ -25,7 +25,7 @@ export default class SessionEntry extends React.Component {
         </div>
         <div className="session-entry-duration">
           <span className="label">Duration: </span>
-          <span className="value">{this.props.entry.duration}</span>
+          <span className="value">{this.props.entry.duration} seconds</span>
         </div>
       </div>
     )
