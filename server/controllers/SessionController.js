@@ -29,7 +29,6 @@ module.exports = {
 
     Session.where(queryObj).fetchAll()
       .then(function(sessions) {
-        // console.log(sessions);
         res.status(200).send(sessions);
       })
       .catch(function(err) {
