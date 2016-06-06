@@ -77,7 +77,7 @@ export default class SettingsView extends React.Component {
   render() {
     return (
       <div className="view settings-view">
-        <h4 className="settings-view-welcome">Settings</h4>
+        <h4 className="settings-view-title">My Settings</h4>
         <h4 className="settings-view-instructions">Update your user settings below.</h4>
 
         <h4 className="form-title">Profile</h4>
