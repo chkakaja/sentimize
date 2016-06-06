@@ -1,5 +1,4 @@
 var request = require('supertest');
-var requestModule = require('request');
 var expect = require('chai').expect;
 
 require('./setup.js');
@@ -36,7 +35,28 @@ describe('Express Server', function() {
           });
       });
     });
-  })
+
+    describe('User signup and login', function() {
+      it('Signup a new user', function(done) {
+        done();
+      });
+      it('Login with the same username and password combination', function(done) {
+        done();
+      });
+    });
+
+  });
+
+  describe('Saving sessions', function() {
+
+  });
+
+  describe('Saving snapshots', function() {
+
+  });
+
+
+
 
   // describe 'User authentication', ->
   //   describe 'POST /sessions', ->
