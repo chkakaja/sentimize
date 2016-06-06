@@ -65,7 +65,7 @@ export default class RecordView extends React.Component {
     FACE.sendImage(
       snapshotBlob,
       successCb, errorCb,
-      env.APP_KEY, env.CLIENT_ID
+      env.FACE_APP_KEY, env.FACE_CLIENT_ID
     );
   }
 
