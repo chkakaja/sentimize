@@ -23,7 +23,7 @@ exports.createUser = function(req, res) {
 exports.getCurrentUser = function(req, res) {
   User.where({ id: req.user.id }).fetch()
     .then(function(currentUser) {
-      // Null out password before sending information back
+      // Null out password before sending information
       currentUser.password = null;
       res.status(200).send(currentUser);
     })
@@ -33,6 +33,26 @@ exports.getCurrentUser = function(req, res) {
 };
 
 exports.updateUser = function(req, res) {
-  var updatedUser = req.body;
-  res.status(200).send(updatedUser);
+  if (req.body.hasNewPassword === true) {
+    setNewPassword(req, res);
+  } else {
+    updateUserProfile(req, res);
+  }
 };
+
+var updateUserProfile = function(req, res) {
+  var updatedUser = req.body;
+  delete req.body.hasNewPassword;
+  new User({ id: req.user.id }).save(updatedUser)
+    .then(function(updatedUser) {
+      res.status(200).send(updatedUser);
+    })
+    .catch(function(err) {
+      console.error(err);
+    })
+};
+
+var setNewPassword = function(req, res) {
+
+};
+

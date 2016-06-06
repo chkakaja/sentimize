@@ -29,11 +29,12 @@ export default class SettingsView extends React.Component {
     });
   }
 
-  _updateUserProfile() {
+  _updateProfile() {
     let formData = {
       firstname: this.refs.firstName.value,
       lastname: this.refs.lastName.value,
       email: this.refs.email.value,
+      hasNewPassword: false
     };
 
     $.ajax({
@@ -47,7 +48,11 @@ export default class SettingsView extends React.Component {
         console.error('_updateUserProfile error', err);
       },
       dataType: 'json'
-    })
+    });
+  }
+
+  _setNewPassword() {
+
   }
 
   render() {
@@ -71,16 +76,16 @@ export default class SettingsView extends React.Component {
             <input type="email" name="Email" placeholder="Update Email" ref="email" required></input>
           </div>
         </form>
-        <button className="update-button" onClick={this._updateUserProfile.bind(this)}>Update profile</button>
+        <button className="update-button" onClick={this._updateProfile.bind(this)}>Update profile</button>
 
         <h4 className="form-title">Password</h4>
         <form className="update-password-form">
           <div className="update-form-label">Current Password</div>
-          <div className="update-form-input password">
+          <div className="update-form-input current-password">
             <input type="password" name="currentpassword" placeholder="Enter current password" required></input>
           </div>
           <div className="update-form-label">New Password</div>
-          <div className="update-form-input password">
+          <div className="update-form-input new-password">
             <input type="password" name="newpassword" placeholder="Enter new password" required></input>
           </div>
         </form>
