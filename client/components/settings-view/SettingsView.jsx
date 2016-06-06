@@ -1,8 +1,26 @@
 import React from 'react';
+import $ from 'jquery';
 
 export default class SettingsView extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillMount() {
+    this._getCurrentUser();
+  }
+
+  _getCurrentUser() {
+    $.ajax({
+      method: 'GET',
+      url: '/api/users',
+      success: function(currentUser) {
+        console.log(currentUser);
+      },
+      error: function(err) {
+        console.error('_getCurrentUser error', err);
+      }
+    });
   }
 
   render() {

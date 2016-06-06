@@ -19,3 +19,14 @@ exports.createUser = function(req, res) {
     console.log(err);
   })
 };
+
+exports.getCurrentUser = function(req, res) {
+  User.where({ id: req.user.id }).fetch()
+    .then(function(currentUser) {
+      console.log(currentUser);
+      res.status(200).send(currentUser);
+    })
+    .catch(function(err) {
+      console.error(err);
+    })
+};
