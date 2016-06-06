@@ -37,5 +37,21 @@ module.exports = {
       .catch(function(err) {
         console.error(err);
       })
+  },
+
+  updateSession: function(req, res) {
+    return Session.forge({id: req.body.sessionId})
+      .fetch()
+      .then(function(session) {
+        session.save({
+          duration: req.body.difference
+        })
+      })
+      .then(function(updatedSession) {
+        res.status(201).send(updatedSession)
+      })
+      .catch(function(err) {
+        console.log('Error in updating session', err)
+      })
   }
 }
