@@ -29,3 +29,7 @@ exports.getCurrentUser = function(req, res) {
       console.error(err);
     })
 };
+
+exports.updateUser = function(req, res) {
+  
+};
