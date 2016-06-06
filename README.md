@@ -93,11 +93,19 @@
 - Jade
 - Bookshelf/Knex
 - MySQL
+- Passport
 
 ##### Testing:
 - Mocha
 - Chai
 - jsdom
+
+##### Continuous Integration:
+- Travis CI
+
+##### Deployment:
+- Digital Ocean Droplet
+- pm2: Production Process Manager
 
 ## Architecture
 ![sentimize](https://cloud.githubusercontent.com/assets/10008938/15795587/c0bfd19a-29a7-11e6-9402-de7dabdf1526.png)
