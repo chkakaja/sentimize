@@ -9,9 +9,9 @@ block content
     div.login-form
       form(method='POST', action='/login')
         div.login-form-input.username
-          input(type='text', name='email', placeholder="Email")
+          input(type='text', name='email', placeholder="Email" required)
         div.login-form-input.password
-          input(type='password', name='password', placeholder="Password")
+          input(type='password', name='password', placeholder="Password" required)
         button.login-button Log in
 
     div.signup-link-container
