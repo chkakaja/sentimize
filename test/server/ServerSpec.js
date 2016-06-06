@@ -47,12 +47,22 @@ describe('Express Server', function() {
 
   });
 
-  describe('Saving sessions', function() {
-
+  describe('Session API interaction', function() {
+    it('GET /api/session', function(done) {
+      done();
+    });
+    it('POST /api/session', function(done) {
+      done();
+    })
   });
 
-  describe('Saving snapshots', function() {
-
+  describe('Snapshot API interaction', function() {
+    it('GET /api/snapshot', function(done) {
+      done();
+    });
+    it('POST /api/snapshot', function(done) {
+      done();
+    })
   });
 
 
