@@ -34,7 +34,7 @@ export default class SettingsView extends React.Component {
       firstname: this.refs.firstName.value,
       lastname: this.refs.lastName.value,
       email: this.refs.email.value,
-      hasNewPassword: false
+      hasNewPassword: 'false'
     };
 
     $.ajax({
@@ -56,7 +56,7 @@ export default class SettingsView extends React.Component {
     let formData = {
       currentPassword: this.refs.currentPassword.value,
       newPassword: this.refs.newPassword.value,
-      hasNewPassword: true
+      hasNewPassword: 'true'
     };
 
     $.ajax({

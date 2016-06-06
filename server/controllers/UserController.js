@@ -33,9 +33,9 @@ exports.getCurrentUser = function(req, res) {
 };
 
 exports.updateUser = function(req, res) {
-  if (req.body.hasNewPassword === true) {
+  if (req.body.hasNewPassword === 'true') {
     setNewPassword(req, res);
-  } else {
+  } else if (req.body.hasNewPassword === 'false') {
     updateUserProfile(req, res);
   }
 };
@@ -43,6 +43,7 @@ exports.updateUser = function(req, res) {
 var updateUserProfile = function(req, res) {
   var updatedUser = req.body;
   delete req.body.hasNewPassword;
+
   new User({ id: req.user.id }).save(updatedUser)
     .then(function(updatedUser) {
       res.status(200).send(updatedUser);
@@ -53,6 +54,24 @@ var updateUserProfile = function(req, res) {
 };
 
 var setNewPassword = function(req, res) {
-
+  User.where({ id: req.user.id }).fetch()
+    .then(function(currentUser) {
+      currentUser.comparePassword(req.body.currentPassword, function(isMatch) {
+        if (!isMatch) {
+          res.status(401).send({ message: 'Incorrect password.' });
+        } else {
+          new User({ id: req.user.id }).save({ password: req.body.newPassword })
+            .then(function(updatedUser) {
+              res.status(200).send(updatedUser);
+            })
+            .catch(function(err) {
+              console.error(err);
+            })
+        }
+      });
+    })
+    .catch(function(err) {
+      console.error(err);
+    })
 };
 
