@@ -50,6 +50,14 @@
   background-color: rgb(200, 220, 235);
 }
 
+.nav-bar-dropdown {
+  cursor: pointer;
+}
+
+.dropdown-link {
+  margin: 6px 4px;
+}
+
 div.footer {
   position: fixed;
   right: 0;

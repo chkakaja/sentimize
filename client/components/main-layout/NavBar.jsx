@@ -14,7 +14,13 @@ export default class NavBar extends React.Component {
           <ul className="pure-menu-list">
             <li className="pure-menu-item"><Link to="/record" className="pure-menu-link">Record</Link></li>
             <li className="pure-menu-item"><Link to="/sessions" className="pure-menu-link">Sessions</Link></li>
-            <li className="pure-menu-item"><a href="/logout" className="pure-menu-link">Log out</a></li>
+            <li className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+              <div className="pure-menu-link nav-bar-dropdown"><i className="fa fa-cog" aria-hidden="true"></i></div>
+              <ul className="pure-menu-children"> 
+                <li className="pure-menu-item"><a href="#" className="pure-menu-link dropdown-link">Settings</a></li>
+                <li className="pure-menu-item"><a href="/logout" className="pure-menu-link dropdown-link">Log out</a></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
