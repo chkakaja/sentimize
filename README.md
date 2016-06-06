@@ -43,7 +43,6 @@
 ##### Server side setup
 
   1. Copy and save the  ``` example.env ``` file in the env folder as ``` development.env ```.
-
   2. Replace the port with your desired port and enter the login credentials for your MySQL server (make sure it is running)
 
 ##### Client side setup
@@ -54,7 +53,7 @@
 
 #### 4. Run the application
 
-  1. From within the root directory run the following command to make sure Browserify builds the bundle file and rebuilds on every change with Watchify:
+  1. Create a build folder within client/build. From within the root directory run the following command to make sure Browserify builds the bundle file and rebuilds on every change with Watchify:
 
   ```sh
   $ npm run bundle
