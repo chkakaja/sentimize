@@ -43,7 +43,6 @@
 ##### Server side setup
 
   1. Copy and save the  ``` example.env ``` file in the env folder as ``` development.env ```.
-
   2. Replace the port with your desired port and enter the login credentials for your MySQL server (make sure it is running)
 
 ##### Client side setup
