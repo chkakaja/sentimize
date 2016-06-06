@@ -2,7 +2,7 @@ var UserController = require('./../controllers/UserController.js');
 
 module.exports = function(app, passport) {
 
-    // Pre-authentication routes
+  // Pre-authentication routes
   app.get('/welcome',
   function(req, res) {
     res.render('welcome');

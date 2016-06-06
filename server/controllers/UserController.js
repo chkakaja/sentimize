@@ -1,10 +1,14 @@
 var User = require('./../models/UserModel.js');
 
 exports.createUser = function(req, res) {
-  var userObj = {};
-  userObj.username = req.body.username;
-  userObj.password = req.body.password;
-  User.where('username', userObj.username).fetch().then(function(user) {
+  var userObj = {
+    firstName: req.body.firstname,
+    lastName: req.body.lastname,
+    email: req.body.email,
+    password: req.body.password
+  };
+
+  User.where('email', userObj.email).fetch().then(function(user) {
     if(!user) {
       return new User(userObj).save();
     }
