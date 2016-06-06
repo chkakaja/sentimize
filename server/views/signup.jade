@@ -5,9 +5,15 @@ block styles
 
 block content
   div.signup-container
-    h1.title Welcome to Sentimize.
+    h1.title Welcome to sentimize.
     div.signup-form
       form(method='POST', action='/api/users')
+        div.signup-form-input.firstname
+          input(type='text', name='firstname', placeholder="First Name")
+        div.signup-form-input.lastname
+          input(type='text', name='lastname', placeholder="Last Name")
+        div.signup-form-input.email
+          input(type='text', name='email', placeholder="Email")
         div.signup-form-input.username
           input(type='text', name='username', placeholder="Username")
         div.signup-form-input.password
