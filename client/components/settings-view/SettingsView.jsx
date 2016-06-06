@@ -65,6 +65,7 @@ export default class SettingsView extends React.Component {
       data: formData,
       success: function(data) {
         console.log(data);
+        $(this.refs.updatePasswordButton).text('Password updated');
       }.bind(this),
       error: function(err) {
         console.error('_setNewPassword error', err);
@@ -107,7 +108,7 @@ export default class SettingsView extends React.Component {
             <input type="password" name="newpassword" placeholder="Enter new password" ref="newPassword" required></input>
           </div>
         </form>
-        <button className="update-password-button" onClick={this._setNewPassword.bind(this)}>Set new password</button>
+        <button className="update-password-button" ref="updatePasswordButton" onClick={this._setNewPassword.bind(this)}>Set new password</button>
       </div>
     )
   }
