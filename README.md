@@ -67,6 +67,17 @@
 
   After that open in your browser the localhost with your chosen port, e.g. ``` http://localhost:4568/ ``` to access the application.
 
+#### 5. Run tests
+
+  Configure the environment variable `NODE_ENV` prior to running tests.
+
+   ```sh
+  $ export NODE_ENV=development
+  $ npm test
+  ```
+
+  You may use `npm run test-client` or `np run test-server` to run front-end and back-end tests independently.
+
 ## Technologies
 
 ##### Front end:

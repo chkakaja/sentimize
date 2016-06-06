@@ -1,5 +1,6 @@
 @import url('./sessions-view.css');
-@import url('./recordview.css');
+@import url('./record-view.css');
+@import url('./settings-view.css');
 
 .main-layout {
   /*Same as the height of the footer*/
@@ -48,6 +49,14 @@
 .pure-menu-link:hover {
   color: #2d3e50;
   background-color: rgb(200, 220, 235);
+}
+
+.nav-bar-dropdown {
+  cursor: pointer;
+}
+
+.dropdown-link {
+  margin: 6px 4px;
 }
 
 div.footer {
