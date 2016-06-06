@@ -13,5 +13,21 @@
 video#webcam {
 	max-height: 80%;
 	height: 80%;
-	width: 80%;
+	width: 100%;
+}
+
+#current-snapshot {
+	right: 0;
+	position: absolute;
+	width: 20%;
+	height: 20%;
+}
+
+.record-box, .record-form {
+	position: relative;
+}
+
+.pure-button-error {
+    background: rgb(202, 60, 60);
+    color: white;
 }

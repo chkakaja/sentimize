@@ -121,18 +121,19 @@ export default class RecordView extends React.Component {
       <div className="pure-g record-container">
         <div className="pure-u-2-3 record-box">
           <video id='webcam' className="pure-u-1-1 record-webcam" autoplay></video>
-          <div className="button-bar">
-            <button className="stop-button" onClick={this._endSession.bind(this)}>Stop</button>
-          </div>
+          <img id='current-snapshot' src=''/>
+          
         </div>
         <div className="pure-u-1-3 record-form">
           <RecordInstructions clicked={this._createNewSession.bind(this)}/>
-          { this.state.showQuestions ? <RecordQuestions /> : null }
+          { this.state.showQuestions ? <RecordQuestions clicked={this._endSession.bind(this)}/> : null }
         </div>
-        <div className="pure-u-2-3 record-box">
-          <img className='pure-u-1-2' id='current-snapshot' src=''/>
-         </div>
+        
       </div>
     )
   }
 }
+
+// <div className="pure-u-2-3 record-box">
+//           <img className='pure-u-1-2' id='current-snapshot' src=''/>
+//         </div>
