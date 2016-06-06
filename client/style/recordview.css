@@ -1,0 +1,17 @@
+
+.pure-form .pure-group{
+    display: block;
+    margin: 1.0em auto;
+    text-align: center;
+}
+
+.pure-form .pure-group .record-form-input.pure-input-1-2{
+	margin: auto;
+	width: 80%;
+}
+
+video#webcam {
+	max-height: 80%;
+	height: 80%;
+	width: 80%;
+}
