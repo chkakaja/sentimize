@@ -1,4 +1,6 @@
 var User = require('./../models/UserModel.js');
+var bcrypt = require('bcrypt-nodejs');
+var Promise = require('bluebird');
 
 exports.createUser = function(req, res) {
   var userObj = {
@@ -60,8 +62,12 @@ var setNewPassword = function(req, res) {
         if (!isMatch) {
           res.status(401).send({ message: 'Incorrect password.' });
         } else {
-          new User({ id: req.user.id }).save({ password: req.body.newPassword })
+          Promise.promisify(bcrypt.hash)(req.body.newPassword, null, null)
+            .then(function(hashedPassword) {
+              return new User({ id: req.user.id }).save({ password: hashedPassword });
+            })
             .then(function(updatedUser) {
+              updatedUser.hashPassword();
               res.status(200).send(updatedUser);
             })
             .catch(function(err) {
