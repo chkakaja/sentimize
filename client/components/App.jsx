@@ -7,7 +7,7 @@ import HomeView from './home-view/HomeView.jsx';
 import RecordView from './record-view/RecordView.jsx';
 import SessionsView from './sessions-view/SessionsView.jsx';
 import ReportView from './report-view/ReportView.jsx';
-import ReportView from './settings-view/SettingsView.jsx';
+import SettingsView from './settings-view/SettingsView.jsx';
 
 export default class App extends React.Component {
   constructor(props) {

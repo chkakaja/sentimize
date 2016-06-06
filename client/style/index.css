@@ -1,5 +1,6 @@
 @import url('./sessions-view.css');
-@import url('./recordview.css');
+@import url('./record-view.css');
+@import url('./settings-view.css');
 
 .main-layout {
   /*Same as the height of the footer*/
