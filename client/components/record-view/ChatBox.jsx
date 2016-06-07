@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDom from 'react-dom';
+import io from 'socket.io-client';
 
-
+var socket = io();
 export default (props) => (
 	<div className="record-questions pure-u-1-1">
 		<h1>Questions</h1>
