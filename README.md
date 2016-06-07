@@ -18,7 +18,13 @@
 
 ## Usage
 
-  See [USAGE.md](USAGE.md) for screenshots and instructions on how to use the app.
+![screen shot 2016-06-06 at 20 10 44](https://cloud.githubusercontent.com/assets/10008938/15844915/2478c052-2c23-11e6-8069-5ed2edce3c05.png)
+![screen shot 2016-06-06 at 20 11 19](https://cloud.githubusercontent.com/assets/10008938/15844918/2796150a-2c23-11e6-98ab-8042cbf48ea1.png)
+![screen shot 2016-06-06 at 20 11 08](https://cloud.githubusercontent.com/assets/10008938/15844920/2972a5c8-2c23-11e6-8cbb-3ddc9fbfcb03.png)
+![screen shot 2016-06-06 at 20 08 50](https://cloud.githubusercontent.com/assets/10008938/15844927/334263b8-2c23-11e6-94f4-d9a040efdfd1.png)
+![screen shot 2016-06-06 at 20 10 18](https://cloud.githubusercontent.com/assets/10008938/15844922/2cdbb236-2c23-11e6-9f2d-4adf4d9b0f79.png)
+![screen shot 2016-06-06 at 20 09 39](https://cloud.githubusercontent.com/assets/10008938/15844923/2f5013c2-2c23-11e6-8608-607eff0c4da8.png)
+![screen shot 2016-06-06 at 20 09 18](https://cloud.githubusercontent.com/assets/10008938/15844924/3144420c-2c23-11e6-920e-c4ebdc5dea55.png)
 
 ## Getting started
 
