@@ -1,8 +1,8 @@
-var User = require('../models/UserModel.js');
+var UserController = require('./../controllers/UserController.js');
 
 module.exports = function(app, passport) {
 
-    // Pre-authentication routes
+  // Pre-authentication routes
   app.get('/welcome',
   function(req, res) {
     res.render('welcome');
@@ -13,43 +13,23 @@ module.exports = function(app, passport) {
     res.render('login');
   });
 
-  app.get('/signup',
-  function(req, res) {
-    res.render('signup');
-  });
-
   app.post('/login',
   passport.authenticate('local', {
     successRedirect: '/',
     failureRedirect: '/login'
   }));
 
-  app.post('/api/users',
-   function(req, res) {
-    var userObj = {};
-    userObj.username = req.body.username;
-    userObj.password = req.body.password;
-    User.where('username', userObj.username).fetch().then(function(user) {
-      if(!user) {
-        return new User(userObj).save();
-      }
-    }).then(function(newUser) {
-      res.status(302).redirect('/');
-    })
-    .catch(function(err) {
-      console.log(err);
-    })
-  });
-
   app.get('/signup',
   function(req, res) {
     res.render('signup');
   });
 
+  app.post('/api/users', UserController.createUser);
+
   app.get('/logout',
   function(req, res) {
     req.logout();
-    res.redirect('/login')
+    res.redirect('/')
   });
 
 };

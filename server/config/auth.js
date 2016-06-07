@@ -11,21 +11,25 @@ module.exports = function(app, express, passport) {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  passport.use('local', new LocalStrategy(
-    function(username, password, done) {
-      User.where('username', username).fetch().then(function(user){
+  passport.use(new LocalStrategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password'
+    },
+    function(email, password, done) {
+      User.where('email', email).fetch().then(function(user){
         if(!user) {
-          return done(null, false, {message: 'Incorrect username.'});
+          return done(null, false, {message: 'Incorrect email.'});
+        } else {
+          user.comparePassword(password, function(passwordCorrect) {
+            if (!passwordCorrect) {
+              return done(null, false, {message: 'Incorrect password.'});
+            } else {
+              console.log('successfully logged in', email);
+              return done(null, user);
+            }
+          });
         }
-        var callback = function(passwordCorrect) {
-          if (!passwordCorrect) {
-            return done(null, false, {message: 'Incorrect password.'});
-          } else {
-            console.log('successfully logged in', username);
-            return done(null, user);
-          }
-        }
-        user.comparePassword(password, callback);
       })
       .catch(function(err) {
         console.error(err);
