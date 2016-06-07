@@ -18,11 +18,11 @@
   color: black;
 }
 
-.instruction-highlight {
+.home-view-instruction .instruction-highlight {
   font-size: 23px;
   color: rgb(70, 130, 210);
 }
 
-a:hover {
+.instruction-highlight a:hover {
   color: black;
 }
