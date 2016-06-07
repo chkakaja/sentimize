@@ -71,16 +71,4 @@ describe('Express Server', function() {
     })
   });
 
-
-
-
-  // describe 'User authentication', ->
-  //   describe 'POST /sessions', ->
-  //     describe 'success', ->
-  //       it 'redirects to the right path', (done) ->
-  //         request
-  //           .post(/login)
-  //           .send('')
-  //           .end(done)
-
 });
