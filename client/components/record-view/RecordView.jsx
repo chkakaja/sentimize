@@ -60,7 +60,7 @@ export default class RecordView extends React.Component {
     var intervalId = setInterval(function() {
       FACE.webcam.takePicture('webcam', 'current-snapshot');
       this._takeSnapshot();
-    }.bind(this), 3000);
+    }.bind(this), 1000);
 
     this.setState({ intervalId: intervalId, startTime: Date.now() });
   }
@@ -115,7 +115,7 @@ export default class RecordView extends React.Component {
     setTimeout(function() {
       FACE.webcam.stopPlaying('webcam');
       browserHistory.push('/reports/' + this.state.sessionId.toString());
-    }.bind(this), 2000)
+    }.bind(this), 1000)
   }
 
   _calcDuration () {
@@ -131,7 +131,7 @@ export default class RecordView extends React.Component {
     $.ajax({
       type: 'POST',
       url: '/api/session/update',
-      data: { 
+      data: {
         difference: difference,
         sessionId: sessionId
       },
@@ -152,13 +152,13 @@ export default class RecordView extends React.Component {
         <div className="pure-u-2-3 record-box">
           <video id='webcam' className="pure-u-1-1 record-webcam" autoplay></video>
           <img id='current-snapshot' src=''/>
-          
+
         </div>
         <div className="pure-u-1-3 record-form">
           <RecordInstructions clicked={this._createNewSession.bind(this)}/>
           { this.state.showQuestions ? <RecordQuestions clicked={this._endSession.bind(this)}/> : null }
         </div>
-        
+
       </div>
     )
   }
