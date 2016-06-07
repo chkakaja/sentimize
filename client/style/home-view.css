@@ -1,0 +1,28 @@
+.home-view-message {
+  margin: 70px 0 20px;
+  font-weight: 300;
+  font-size: 50px;
+}
+
+.home-view-welcome {
+  font-weight: 300;
+  font-size: 20px;
+  /*color: rgb(130, 130, 140);*/
+  margin-bottom: 45px;
+}
+
+.home-view-instruction {
+  font-weight: 300;
+  font-size: 16px;
+  margin: 10px 0;
+  color: black;
+}
+
+.home-view-instruction .instruction-highlight {
+  font-size: 23px;
+  color: rgb(70, 130, 210);
+}
+
+.instruction-highlight a:hover {
+  color: black;
+}
