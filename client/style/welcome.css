@@ -60,6 +60,7 @@ div.welcome-container {
 }
 
 a.start-button {
+  border-radius: 5px;
   margin: 15px 0;
   width: 290px;
   padding: 18px 20px;
