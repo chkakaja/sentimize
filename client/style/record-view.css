@@ -31,3 +31,7 @@ video#webcam {
     background: rgb(202, 60, 60);
     color: white;
 }
+
+li {
+  text-align: left;
+}
