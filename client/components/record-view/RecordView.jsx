@@ -6,13 +6,16 @@ import $ from 'jquery';
 import FACE from './../../lib/FACE-1.0.js';
 import env from './../../../env/client-config.js';
 import RecordInstructions from './record-instructions.jsx';
+import RecordQuestions from './record-questions.jsx';
 
 export default class RecordView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       sessionId: null,
-      intervalId: null
+      intervalId: null,
+      showQuestions: false,
+      startTime: undefined
     }
   }
 
@@ -20,10 +23,17 @@ export default class RecordView extends React.Component {
     FACE.webcam.startPlaying('webcam');
   }
 
-  _createNewSession() {
+  _createNewSession(e) {
+    var formData = {
+     title: $('.record-title')[0].value,
+     subject: $('.record-subject')[0].value,
+     description: $('.record-description')[0].value
+    }
+
     $.ajax({
       type: 'POST',
       url: '/api/session',
+      data: formData,
       success: function(newSession) {
         console.log('New Session: ' + newSession.id);
         this.setState({
@@ -31,6 +41,7 @@ export default class RecordView extends React.Component {
         });
 
         this._startRecording()
+        this._loadprompt()
       }.bind(this),
       error: function(error) {
         console.error('startRecording error', error)
@@ -38,14 +49,20 @@ export default class RecordView extends React.Component {
       dataType: 'json'
     });
   }
+  _loadprompt() {
 
+    $('.record-instructions').remove()
+    this.setState({showQuestions: true})
+
+
+  }
   _startRecording() {
     var intervalId = setInterval(function() {
       FACE.webcam.takePicture('webcam', 'current-snapshot');
       this._takeSnapshot();
-    }.bind(this), 3000);
+    }.bind(this), 1000);
 
-    this.setState({ intervalId: intervalId });
+    this.setState({ intervalId: intervalId, startTime: Date.now() });
   }
 
   _takeSnapshot() {
@@ -92,29 +109,61 @@ export default class RecordView extends React.Component {
   _endSession() {
     console.log('Session ended.');
     clearInterval(this.state.intervalId);
+    this._calcDuration()
 
     // Wait 2 seconds after stop button is pressed
     setTimeout(function() {
       FACE.webcam.stopPlaying('webcam');
       browserHistory.push('/reports/' + this.state.sessionId.toString());
-    }.bind(this), 2000)
+    }.bind(this), 1000)
+  }
+
+  _calcDuration () {
+    let sessionId = this.state.sessionId;
+
+    if (this.state.startTime !== undefined) {
+        var endTime = Date.now();
+        var difference = endTime - this.state.startTime;
+        difference = Math.round(difference/1000)
+    }
+    console.log(difference, 'this is the difference in seconds')
+    //create ajax request to update /api/sessions of sessionId
+    $.ajax({
+      type: 'POST',
+      url: '/api/session/update',
+      data: {
+        difference: difference,
+        sessionId: sessionId
+      },
+      success: function(updatedSession) {
+        console.log(updatedSession, 'UPDATED DURATION')
+      }.bind(this),
+      error: function(error) {
+        console.error('_calcDuration error', error)
+      },
+      dataType: 'json'
+    });
+
   }
 
   render() {
     return (
-      <div className="pure-g">
+      <div className="pure-g record-container">
         <div className="pure-u-2-3 record-box">
-          <video id='webcam' className="pure-u-1-1" autoplay></video>
-          <div className="button-bar">
-            <button className="record-button" onClick={this._createNewSession.bind(this)}>Record</button>
-            <button className="stop-button" onClick={this._endSession.bind(this)}>Stop</button>
-          </div>
+          <video id='webcam' className="pure-u-1-1 record-webcam" autoplay></video>
           <img id='current-snapshot' src=''/>
+
         </div>
-        <div className="pure-u-1-3">
-          <RecordInstructions/>
+        <div className="pure-u-1-3 record-form">
+          <RecordInstructions clicked={this._createNewSession.bind(this)}/>
+          { this.state.showQuestions ? <RecordQuestions clicked={this._endSession.bind(this)}/> : null }
         </div>
+
       </div>
     )
   }
 }
+
+// <div className="pure-u-2-3 record-box">
+//           <img className='pure-u-1-2' id='current-snapshot' src=''/>
+//         </div>

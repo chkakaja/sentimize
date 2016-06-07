@@ -4,11 +4,13 @@ var moment = require('moment');
 module.exports = {
   createSession: function(req, res) {
     // Dummy data for now in: title, description, subject, and duration
+    console.log(req.data, 'REQ DATA')
+    console.log(req.body, 'REQ BODY')
     var sessionObj = {
       userId: req.user.id,
-      title: 'Temporary Title',
-      description: 'Temporary Description',
-      subject: 'Temporary Subject',
+      title: req.body.title,
+      description: req.body.description,
+      subject: req.body.subject,
       date: moment().format('MMMM Do YYYY, h:mm a'),
       duration: 'Temporary Duration'
     }
@@ -33,6 +35,22 @@ module.exports = {
       })
       .catch(function(err) {
         console.error(err);
+      })
+  },
+
+  updateSession: function(req, res) {
+    return Session.forge({id: req.body.sessionId})
+      .fetch()
+      .then(function(session) {
+        session.save({
+          duration: req.body.difference
+        })
+      })
+      .then(function(updatedSession) {
+        res.status(201).send(updatedSession)
+      })
+      .catch(function(err) {
+        console.log('Error in updating session', err)
       })
   }
 }
