@@ -38,9 +38,11 @@ describe('Express Server', function() {
 
     describe('User signup and login', function() {
       it('Signup a new user', function(done) {
+        //to be fully implemented
         done();
       });
       it('Login with the same username and password combination', function(done) {
+        //to be fully implemented
         done();
       });
     });
@@ -49,18 +51,22 @@ describe('Express Server', function() {
 
   describe('Session API interaction', function() {
     it('GET /api/session', function(done) {
+      //to be fully implemented
       done();
     });
     it('POST /api/session', function(done) {
+      //to be fully implemented
       done();
     })
   });
 
   describe('Snapshot API interaction', function() {
     it('GET /api/snapshot', function(done) {
+      //to be fully implemented
       done();
     });
     it('POST /api/snapshot', function(done) {
+      //to be fully implemented
       done();
     })
   });
