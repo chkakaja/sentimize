@@ -6,7 +6,7 @@ import $ from 'jquery';
 import FACE from './../../lib/FACE-1.0.js';
 import env from './../../../env/client-config.js';
 import RecordInstructions from './record-instructions.jsx';
-import RecordQuestions from './record-questions.jsx';
+import ChatBox from './ChatBox.jsx';
 
 export default class RecordView extends React.Component {
   constructor(props) {
@@ -156,7 +156,7 @@ export default class RecordView extends React.Component {
         </div>
         <div className="pure-u-1-3 record-form">
           <RecordInstructions clicked={this._createNewSession.bind(this)}/>
-          { this.state.showQuestions ? <RecordQuestions clicked={this._endSession.bind(this)}/> : null }
+          { this.state.showQuestions ? <ChatBox clicked={this._endSession.bind(this)}/> : null }
         </div>
 
       </div>
