@@ -13,7 +13,7 @@ module.exports = {
       subject: req.body.subject,
       date: moment().format('MMMM Do YYYY, h:mm a'),
       duration: 'Temporary Duration'
-    }
+    };
 
     return new Session(sessionObj).save()
       .then(function(newSession) {
@@ -27,7 +27,7 @@ module.exports = {
   getSessions: function(req, res) {
     var queryObj = {
       userId: req.user.id
-    }
+    };
 
     Session.where(queryObj).fetchAll()
       .then(function(sessions) {
@@ -35,7 +35,7 @@ module.exports = {
       })
       .catch(function(err) {
         console.error(err);
-      })
+      });
   },
 
   updateSession: function(req, res) {
@@ -44,13 +44,13 @@ module.exports = {
       .then(function(session) {
         session.save({
           duration: req.body.difference
-        })
+        });
       })
       .then(function(updatedSession) {
         res.status(201).send(updatedSession)
       })
       .catch(function(err) {
         console.log('Error in updating session', err)
-      })
+      });
   }
 }

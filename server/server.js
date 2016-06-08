@@ -11,6 +11,10 @@ var util = require('./lib/utility.js');
 
 var app = express();
 
+// var server = require('http').createServer(app);
+// var ExpressPeerServer = require('peer').ExpressPeerServer;
+// app.use('/peerjs', ExpressPeerServer(server, { debug: true }));
+
 // Initial Configuration, Static Assets, & View Engine Configuration
 require('./config/initialize.js')(app, express);
 // Authentication Middleware: Express Sessions, Passport Strategy
