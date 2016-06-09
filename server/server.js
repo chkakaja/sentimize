@@ -8,8 +8,17 @@ if (process.env.NODE_ENV === 'development') {
 var express = require('express');
 var passport = require('passport');
 var util = require('./lib/utility.js');
-
 var app = express();
+var http = require('http').Server(app);
+
+//set up socket.io
+var http = require('http').Server(app);
+exports.io = require('socket.io')(http);
+require('./controllers/SocketsController.js');
+
+// var server = require('http').createServer(app);
+// var ExpressPeerServer = require('peer').ExpressPeerServer;
+// app.use('/peerjs', ExpressPeerServer(server, { debug: true }));
 
 // Initial Configuration, Static Assets, & View Engine Configuration
 require('./config/initialize.js')(app, express);
@@ -32,7 +41,7 @@ app.get('/*', function(req, res) {
   res.redirect('/');
 })
 
-app.listen(Number(process.env.PORT), process.env.HOST, function() {
+http.listen(Number(process.env.PORT), process.env.HOST, function() {
   console.log('NODE_ENV: ' + process.env.NODE_ENV);
   console.log(process.env.APP_NAME + ' is listening at ' + process.env.HOST + ' on port ' + process.env.PORT + '.')
 });

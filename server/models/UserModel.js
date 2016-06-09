@@ -15,6 +15,7 @@ db.knex.schema.hasTable('users').then(function(exists) {
       user.string('ethnicity', 255);
       user.string('firstName', 255);
       user.string('lastName', 255);
+      user.string('peerId', 255);
       user.timestamps();
     }).then(function (table) {
       console.log('Created Table', table);

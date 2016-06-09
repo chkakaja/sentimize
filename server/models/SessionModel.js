@@ -6,12 +6,15 @@ db.knex.schema.hasTable('sessions').then(function(exists) {
   if (!exists) {
     db.knex.schema.createTable('sessions', function(session) {
       session.increments('id').primary();
-      session.integer('userId');
+      session.integer('interviewerId');
+      session.integer('intervieweeId');
       session.string('title');
       session.string('description');
+      session.string('transcript');
       session.string('subject');
       session.string('date');
       session.string('duration');
+      session.string('notes');
       session.timestamps();
     }).then(function() {
       console.log('Session Table created');
