@@ -19,7 +19,7 @@ exports.createUser = function(req, res) {
   })
   .catch(function(err) {
     console.log(err);
-  })
+  });
 };
 
 exports.getCurrentUser = function(req, res) {
@@ -31,7 +31,7 @@ exports.getCurrentUser = function(req, res) {
     })
     .catch(function(err) {
       console.error(err);
-    })
+    });
 };
 
 exports.updateUser = function(req, res) {
@@ -40,6 +40,16 @@ exports.updateUser = function(req, res) {
   } else if (req.body.hasNewPassword === 'false') {
     updateUserProfile(req, res);
   }
+};
+
+exports.getCalledUser = function(req, res) {
+  User.where(req.query).fetch()
+    .then(function(calledUser) {
+      res.status(200).send(calledUser)
+    })
+    .catch(function(err) {
+      console.error(err);
+    })
 };
 
 var updateUserProfile = function(req, res) {
@@ -52,7 +62,7 @@ var updateUserProfile = function(req, res) {
     })
     .catch(function(err) {
       console.error(err);
-    })
+    });
 };
 
 var setNewPassword = function(req, res) {
@@ -78,6 +88,6 @@ var setNewPassword = function(req, res) {
     })
     .catch(function(err) {
       console.error(err);
-    })
+    });
 };
 
