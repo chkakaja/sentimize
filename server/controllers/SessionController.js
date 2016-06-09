@@ -62,9 +62,23 @@ module.exports = {
   },
 
   calledGenerateSession: function(req, res) {
+    // something wrong here
     Session.where({ intervieweeId: req.query.id }).fetchAll()
-      .then(function(sessions) {
-        res.status(200).send(sessions._byId[sessions.length - 1]);
+      .then(function(intervieweeSessions) {
+        Session.where({ interviewerId: req.query.id }).fetchAll()
+          .then(function(interviewerSessions) {
+            // FIND A WAY TO GET THIS DONE
+            var lastInterviewerSession = interviewerSessions._byId[Object.keys(interviewerSessions._byId)[(Object.keys(interviewerSessions._byId).length) / 2 - 1]];
+            var lastIntervieweeSession = intervieweeSessions._byId[Object.keys(intervieweeSessions._byId)[(Object.keys(intervieweeSessions._byId).length) / 2 - 1]];
+            console.log('INTERVIEWER', lastInterviewerSession);
+            console.log('interviewee', lastIntervieweeSession);
+            if (lastInterviewerSession.attributes.id > lastIntervieweeSession.attributes.id) {
+              res.status(200).send(lastInterviewerSession);
+            } else {
+              res.status(200).send(lastIntervieweeSession);
+            }
+            res.send();
+          })
       })
       .catch(function(err) {
         console.error(err);

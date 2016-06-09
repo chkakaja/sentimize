@@ -82,7 +82,9 @@ export default class RecordView extends React.Component {
         call.on('stream', (remoteStream) => {
           // find way to check state to see if they are interviewee or not - if they are, generate session
           var role = calledGenerateSession();
+          console.log('CALLED USER', role);
           if (role === 'Interviewee') {
+            console.log('STARTED RECORDING');
             startRecording();
           }
           loadPrompt();
@@ -112,7 +114,9 @@ export default class RecordView extends React.Component {
       var call = this.state.peer.call(this.state.calledUserPeerId, stream);
       console.log('call', call);
       call.on('stream', function(remoteStream) {
+        console.log('CALLING USER', role);
         if (role === 'Interviewee') {
+          console.log('STARTED RECORDING');
           startRecording();
         }
         loadPrompt();
@@ -137,6 +141,7 @@ export default class RecordView extends React.Component {
           subject: $('.record-subject')[0].value,
           description: $('.record-description')[0].value,
         };
+        // console.log('WITHIN CREATE NEW SESSION', this.state.role)
         if (this.state.role === 'Interviewer') {
           formData.interviewerId = this.state.currentUserId;
           formData.intervieweeId = this.state.calledUserId;
@@ -144,6 +149,7 @@ export default class RecordView extends React.Component {
           formData.intervieweeId = this.state.currentUserId;
           formData.interviewerId = this.state.calledUserId;
         }
+        // console.log('SUBMITTED FORM', formData);
 
         $.ajax({
           type: 'POST',
@@ -173,6 +179,8 @@ export default class RecordView extends React.Component {
         async: false,
         data: { id: this.state.currentUserId },
         success: function(newSession) {
+          console.log('session being created', newSession);
+          console.log('current user', this.state.currentUserId);
           if (newSession.interviewerId === this.state.currentUserId) {
             var role = 'Interviewer';
           } else {
@@ -181,7 +189,7 @@ export default class RecordView extends React.Component {
           this.setState({
             sessionId: newSession.id,
             role: role
-          });
+          }, () => console.log('role after success', this.state.role));
         }.bind(this),
         error: function(error) {
           console.error('calledGenerateSession error', error)
@@ -331,7 +339,3 @@ export default class RecordView extends React.Component {
     )
   }
 }
-
-// <div className="pure-u-2-3 record-box">
-//           <img className='pure-u-1-2' id='current-snapshot' src=''/>
-//         </div>
