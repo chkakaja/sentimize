@@ -42,7 +42,7 @@ exports.updateUser = function(req, res) {
   }
 };
 
-exports.getCalledUser = function(req, res) {
+exports.getCalledUserInfo = function(req, res) {
   User.where(req.query).fetch()
     .then(function(calledUser) {
       res.status(200).send(calledUser)
@@ -51,6 +51,17 @@ exports.getCalledUser = function(req, res) {
       console.error(err);
     })
 };
+
+exports.updatePeerId = function(req, res) {
+  User.where({ id: req.body.id }).fetch()
+    .then(function(user) {
+      user.set({ peerId: req.body.peerId }).save();
+      res.status(200).send(user);
+    })
+    .catch(function(err) {
+      console.error(err);
+    })
+}
 
 var updateUserProfile = function(req, res) {
   var updatedUser = req.body;

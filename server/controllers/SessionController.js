@@ -7,7 +7,8 @@ module.exports = {
     console.log(req.data, 'REQ DATA')
     console.log(req.body, 'REQ BODY')
     var sessionObj = {
-      userId: req.user.id,
+      intervieweeId: req.body.intervieweeId,
+      interviewerId: req.body.interviewerId,
       title: req.body.title,
       description: req.body.description,
       subject: req.body.subject,
@@ -24,12 +25,18 @@ module.exports = {
       });
   },
 
-  getSessions: function(req, res) {
-    var queryObj = {
-      userId: req.user.id
-    };
+  getInterviewerSessions: function(req, res) {
+    Session.where({ interviewerId: req.user.id }).fetchAll()
+      .then(function(sessions) {
+        res.status(200).send(sessions);
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+  },
 
-    Session.where(queryObj).fetchAll()
+  getIntervieweeSessions: function(req, res) {
+    Session.where({ intervieweeId: req.user.id }).fetchAll()
       .then(function(sessions) {
         res.status(200).send(sessions);
       })
@@ -51,6 +58,16 @@ module.exports = {
       })
       .catch(function(err) {
         console.log('Error in updating session', err)
+      });
+  },
+
+  calledGenerateSession: function(req, res) {
+    Session.where({ intervieweeId: req.query.id }).fetchAll()
+      .then(function(sessions) {
+        res.status(200).send(sessions._byId[sessions.length - 1]);
+      })
+      .catch(function(err) {
+        console.error(err);
       });
   }
 }

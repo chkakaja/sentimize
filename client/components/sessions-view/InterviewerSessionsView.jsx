@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 // import dummyData from './../../../data/session-data.json';
 
-export default class SessionsView extends React.Component {
+export default class InterviewerSessionsView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ export default class SessionsView extends React.Component {
   _getSessions(callback) {
     $.ajax({
       method: 'GET',
-      url: '/api/session',
+      url: '/api/session/interviewer',
       success: function(data) {
         callback(data);
       },
@@ -36,7 +36,7 @@ export default class SessionsView extends React.Component {
   render() {
     return (
       <div className="view sessions-view">
-        <h4 className="sessions-view-title">My Sessions</h4>
+        <h4 className="sessions-view-title">My Interviewer Sessions</h4>
         <div className="pure-g">
           {this.state.sessionEntries.map(
             entry => (

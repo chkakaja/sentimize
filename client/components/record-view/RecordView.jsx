@@ -15,13 +15,14 @@ export default class RecordView extends React.Component {
     this.state = {
       currentUserId: null,
       calledUserId: null,
+      calledUserPeerId: null,
       sessionId: null,
       intervalId: null,
       showQuestions: false,
       startTime: undefined,
+      peer: new Peer({ key: '9iht7nu2hv45nrk9', debug: 3 }),
+      role: null
     }
-    this.peer = null;
-    this.existingCall = null;
   }
 
 
@@ -38,7 +39,7 @@ export default class RecordView extends React.Component {
       success: function(currentUser) {
         this.setState({
           currentUserId: currentUser.id
-        }, this._listenPeerConnection);
+        }, this._listenPeerConnection.bind(this));
       }.bind(this),
       error: function(error) {
         console.error('Error getting user', error);
@@ -48,31 +49,46 @@ export default class RecordView extends React.Component {
 
 
   _listenPeerConnection() {
-    // ************************************************************************ WHY IS THIS NOT WORKING
-
-    console.log('CURRENT USER AFTER STATE CHANGE', this.state.currentUserId);
-
-    this.peer = new Peer(this.state.currentUserId, {
-      // host: process.env.HOST,
-      // port: process.env.PORT_PEER,
-      // path: '/peerjs',
-      key: '9iht7nu2hv45nrk9',
-      debug: 3
-    });
     var video = document.querySelector('#webcam');
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
+    var currId = this.state.currentUserId;
+    this.state.peer.on('open', function(id) {
+      $.ajax({
+        method: 'POST',
+        url: '/api/users/updatePeerId',
+        data: {
+          id: currId,
+          peerId: id
+        },
+        dataType: 'json',
+        success: function(data) {
+          console.log('Updated user peer id', data.peerId);
+        }
+      });
+    });
+
+    var calledGenerateSession = this._calledGenerateSession.bind(this);
+    var startRecording = this._startRecording.bind(this);
+    var loadPrompt = this._loadPrompt.bind(this);
+    var currId = this.state.currentUserId;
+
     // Answer connection
-    console.log('PEER', this.peer);
-    this.peer.on('call', function(call) {
+    this.state.peer.on('call', (call) => {
       console.log('called', call);
-      navigator.getUserMedia({ video: true, audio: true }, function(stream) {
+      navigator.getUserMedia({ video: true, audio: true }, (stream) => {
         // can prompt the user here if they want to answer or not
         call.answer(stream);
-        call.on('stream', function(remoteStream) {
+        call.on('stream', (remoteStream) => {
+          // find way to check state to see if they are interviewee or not - if they are, generate session
+          var role = calledGenerateSession();
+          if (role === 'Interviewee') {
+            startRecording();
+          }
+          loadPrompt();
+
           video.src = window.URL.createObjectURL(stream);
-          // HAVE IT SO THAT THEY CAN HANG UP THE CALL WHEN THEY CLICK ON A BUTTON
-          this.existingCall = call;
+          window.existingCall = call;
           console.log('CREATED VIDEO', video);
           console.log('RECEIVED REMOTE STREAM', remoteStream);
         });
@@ -87,14 +103,21 @@ export default class RecordView extends React.Component {
     var video = document.querySelector('#webcam');
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-    console.log('CALLED USER AFTER STATE CHANGE', this.state.calledUserId);
+    var startRecording = this._startRecording.bind(this);
+    var loadPrompt = this._loadPrompt.bind(this);
+    var role = this.state.role;
 
     // Call connection
     navigator.getUserMedia({ video: true, audio: true }, function(stream) {
-      var call = this.peer.call(this.state.calledUserId, stream);
+      var call = this.state.peer.call(this.state.calledUserPeerId, stream);
       console.log('call', call);
       call.on('stream', function(remoteStream) {
+        if (role === 'Interviewee') {
+          startRecording();
+        }
+        loadPrompt();
         video.src = window.URL.createObjectURL(stream);
+        window.existingCall = call;
         console.log('CREATED VIDEO', video);
         console.log('RECEIVED REMOTE STREAM', remoteStream);
       })
@@ -105,45 +128,81 @@ export default class RecordView extends React.Component {
 
 
   _createNewSession(e) {
-    var formData = {
-      title: $('.record-title')[0].value,
-      subject: $('.record-subject')[0].value,
-      description: $('.record-description')[0].value
-    };
+    this.setState({
+      role: $('.record-role')[0].value
+    }, function() {
+      this._getCalledUserInfo($('.record-called-user')[0].value, function() {
+        var formData = {
+          title: $('.record-title')[0].value,
+          subject: $('.record-subject')[0].value,
+          description: $('.record-description')[0].value,
+        };
+        if (this.state.role === 'Interviewer') {
+          formData.interviewerId = this.state.currentUserId;
+          formData.intervieweeId = this.state.calledUserId;
+        } else {
+          formData.intervieweeId = this.state.currentUserId;
+          formData.interviewerId = this.state.calledUserId;
+        }
 
-    $.ajax({
-      type: 'POST',
-      url: '/api/session',
-      data: formData,
-      success: function(newSession) {
-        console.log('New Session: ' + newSession.id);
-        this.setState({
-          sessionId: newSession.id
-        }, function() {
-          this._getCalledUser($('.record-called-user')[0].value);
+        $.ajax({
+          type: 'POST',
+          url: '/api/session',
+          data: formData,
+          success: function(newSession) {
+            console.log('New Session: ' + newSession.id);
+            this.setState({
+              sessionId: newSession.id
+            }, this._callPeer.bind(this));
+          }.bind(this),
+          error: function(error) {
+            console.error('startRecording error', error)
+          },
+          dataType: 'json'
         });
+      });
+    }.bind(this));
 
-        this._startRecording();
-        this._loadprompt();
-      }.bind(this),
-      error: function(error) {
-        console.error('startRecording error', error)
-      },
-      dataType: 'json'
-    });
   }
 
 
-  _getCalledUser(email) {
+  _calledGenerateSession() {
+    $.ajax({
+        type: 'GET',
+        url: '/api/session/calledGenerateSession',
+        async: false,
+        data: { id: this.state.currentUserId },
+        success: function(newSession) {
+          if (newSession.interviewerId === this.state.currentUserId) {
+            var role = 'Interviewer';
+          } else {
+            var role = 'Interviewee';
+          }
+          this.setState({
+            sessionId: newSession.id,
+            role: role
+          });
+        }.bind(this),
+        error: function(error) {
+          console.error('calledGenerateSession error', error)
+        },
+        dataType: 'json'
+      });
+    return this.state.role;
+  }
+
+
+  _getCalledUserInfo(email, cb) {
     $.ajax({
       type: 'GET',
-      url: '/api/users/getCalledUser',
+      url: '/api/users/getCalledUserInfo',
       data: { email: email },
       dataType: 'json',
       success: function(calledUser) {
         this.setState({
+          calledUserPeerId: calledUser.peerId,
           calledUserId: calledUser.id
-        }, this._callPeer);
+        }, cb);
       }.bind(this),
       error: function(error) {
         console.error('Error getting called user', error);
@@ -153,17 +212,16 @@ export default class RecordView extends React.Component {
 
 
   _startRecording() {
-    // ************************************************************************ PEER JS SHIT GOES HERE TOO
     var intervalId = setInterval(function() {
       FACE.webcam.takePicture('webcam', 'current-snapshot');
       this._takeSnapshot();
-    }.bind(this), 1000);
+    }.bind(this), 2000);
 
     this.setState({ intervalId: intervalId, startTime: Date.now() });
   }
 
 
-  _loadprompt() {
+  _loadPrompt() {
     $('.record-instructions').remove();
     this.setState({showQuestions: true});
   }
@@ -213,17 +271,18 @@ export default class RecordView extends React.Component {
 
 
   _endSession() {
-    // ************************************************************************ PEER JS SHIT GOES HERE TOO
     console.log('Session ended.');
-    clearInterval(this.state.intervalId);
-    this._calcDuration()
-    this.existingCall.close();
+    window.existingCall.close();
+    if (this.state.role === 'Interviewee') {
+      clearInterval(this.state.intervalId);
+      this._calcDuration();
 
-    // Wait 2 seconds after stop button is pressed
-    setTimeout(function() {
-      FACE.webcam.stopPlaying('webcam');
-      browserHistory.push('/reports/' + this.state.sessionId.toString());
-    }.bind(this), 1000)
+      // Wait 2 seconds after stop button is pressed
+      setTimeout(function() {
+        FACE.webcam.stopPlaying('webcam');
+      }.bind(this), 2000)
+    }
+    browserHistory.push('/reports/' + this.state.sessionId.toString());
   }
 
 
@@ -236,7 +295,7 @@ export default class RecordView extends React.Component {
         difference = Math.round(difference/1000);
     }
     console.log(difference, 'this is the difference in seconds')
-    //create ajax request to update /api/sessions of sessionId
+    // create ajax request to update /api/sessions of sessionId
     $.ajax({
       type: 'POST',
       url: '/api/session/update',
