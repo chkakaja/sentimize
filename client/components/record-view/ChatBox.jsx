@@ -10,7 +10,8 @@ export default class ChatBox extends React.Component {
 		this.state = {
 			transcript: [],
       transcriptPart: '',
-		}
+		};
+    this.saveTranscript = this.saveTranscript.bind(this)
 	}
 
 	componentDidMount() {
@@ -34,13 +35,14 @@ export default class ChatBox extends React.Component {
   }
 
   saveTranscript(){
+    console.log('---------------', this.props.currentSession)
     var formattedTran = this.state.transcript.join('+');
     console.log(formattedTran);
     $.ajax({
       method:'POST',
       url: '/transcript',
       data: {       
-        sender: 1,
+        session: this.props.currentSession,
         transcript: formattedTran,
       },
       success: function() {
@@ -54,7 +56,6 @@ export default class ChatBox extends React.Component {
   }
 
 
-
 	render(){
 	  return (
 			<div className="record-questions pure-u-1-1">
@@ -64,10 +65,10 @@ export default class ChatBox extends React.Component {
           })}
         </ul>
         <div className="button-bar">        
-          <textarea onChange={this.onTranscriptChange.bind(this)} className="testarea" type="text" value={this.state.transcriptPart}>
-          </textarea>
-          <button onClick={this.sendTranscript.bind(this)} >send</button>
-          
+            <input onChange={this.onTranscriptChange.bind(this)}
+             type="text" value={this.state.transcriptPart}> 
+            </input>
+            <button onClick={this.sendTranscript.bind(this)} >send</button>
         </div>
 		    <div className="button-bar">
           <button className="stop-button pure-button pure-button-error" 
