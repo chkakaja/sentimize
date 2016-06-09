@@ -5,7 +5,7 @@ var User = require('../models/UserModel.js');
 module.exports = function(app, express, passport) {
   app.use(session({
     name: 'sentimize',
-    secret: 'chkakaja',
+    secret: 'crypticzoologists',
   }))
 
   app.use(passport.initialize());
@@ -17,7 +17,7 @@ module.exports = function(app, express, passport) {
       passwordField: 'password'
     },
     function(email, password, done) {
-      User.where('email', email).fetch().then(function(user){
+      User.where('email', email).fetch().then(function(user) {
         if(!user) {
           return done(null, false, {message: 'Incorrect email.'});
         } else {

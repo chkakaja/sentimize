@@ -35,6 +35,7 @@
     "numeral": "^1.5.3",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
+    "peerjs": "^0.3.14",
     "react": "^15.1.0",
     "react-chartjs": "^0.7.3",
     "react-dom": "^15.1.0",
