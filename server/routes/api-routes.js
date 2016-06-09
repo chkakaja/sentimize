@@ -6,6 +6,7 @@ module.exports = function(app) {
   // See auth-routes for POST to /api/users
   app.get('/api/users', UserController.getCurrentUser);
   app.put('/api/users', UserController.updateUser);
+  app.get('/api/users/getCalledUser', UserController.getCalledUser);
 
   app.get('/api/session',  SessionController.getSessions);
   app.post('/api/session', SessionController.createSession);
