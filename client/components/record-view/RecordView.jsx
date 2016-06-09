@@ -156,7 +156,8 @@ export default class RecordView extends React.Component {
         </div>
         <div className="pure-u-1-3 record-form">
           <RecordInstructions clicked={this._createNewSession.bind(this)}/>
-          { this.state.showQuestions ? <ChatBox clicked={this._endSession.bind(this)}/> : null }
+          { this.state.showQuestions ? <ChatBox clicked={this._endSession.bind(this)}
+            currentSession={this.state.sessionId}/> : null }
         </div>
 
       </div>
