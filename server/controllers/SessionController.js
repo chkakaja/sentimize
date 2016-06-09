@@ -52,5 +52,14 @@ module.exports = {
       .catch(function(err) {
         console.log('Error in updating session', err)
       })
+  },
+  sessionTranscript: function(req, res){
+    new Session({
+      'id' : req.body.sender
+    }).save({
+      'transcript': req.body.transcript
+    }).then(function(session){
+      res.send(201)
+    })
   }
 }

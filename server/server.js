@@ -11,11 +11,11 @@ var util = require('./lib/utility.js');
 var app = express();
 var http = require('http').Server(app);
 
-var io = require('socket.io')(http);
+//set up socket.io
+var http = require('http').Server(app);
+exports.io = require('socket.io')(http);
+require('./controllers/SocketsController.js');
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-});
 // Initial Configuration, Static Assets, & View Engine Configuration
 require('./config/initialize.js')(app, express);
 // Authentication Middleware: Express Sessions, Passport Strategy
