@@ -87,11 +87,25 @@ module.exports = {
   
   sessionTranscript: function(req, res){
     new Session({
-      'id' : req.body.sender
+      'id' : req.body.session
     }).save({
       'transcript': req.body.transcript
     }).then(function(session){
       res.send(201)
+    })
+  },
+  
+  loadSessionTranscript: function(req, res) {
+    var parsedUrl = req.url.split('/');
+    var queryObj = {
+      id: parsedUrl[parsedUrl.length - 1]
+    }
+    Session.where(queryObj).fetch()
+    .then(function(session) {
+      res.status(200).send(session);
+    })
+    .catch(function(err) {
+      console.error(err);
     })
   }
 }

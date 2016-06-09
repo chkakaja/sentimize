@@ -61,7 +61,7 @@ exports.updatePeerId = function(req, res) {
     .catch(function(err) {
       console.error(err);
     })
-}
+};
 
 var updateUserProfile = function(req, res) {
   var updatedUser = req.body;

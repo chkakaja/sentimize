@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import {Line as LineChart} from 'react-chartjs';
 import {Radar as RadarChart} from 'react-chartjs';
+import Transcript from './TranscriptView.jsx';
+import Notes from './NotesView.jsx';
 
 const options = {
   scaleShowGridLines: true,
@@ -63,7 +65,9 @@ export default class ChartComponent extends React.Component {
             data: []
           }
         ]
-      }
+      },
+    showTranscript: false,
+    showNotes: false
     }
   }
 
@@ -76,6 +80,7 @@ export default class ChartComponent extends React.Component {
         console.error('error while fetching report data', error);
       },
       success: function(sessionData) {
+        console.log('____________________________________', sessionData)
         console.log(sessionData);
 
         var sadness = 0;
@@ -111,9 +116,43 @@ export default class ChartComponent extends React.Component {
     })
   };
 
+  toggleTranscriptView(){
+    if(this.state.showTranscript){
+      this.setState({
+        showTranscript: false
+      })
+    } else {
+      this.setState({
+        showTranscript: true
+      })
+    }
+  }
+
+  toggleNotesView(){
+    if(this.state.showNotes){
+      this.setState({
+        showNotes: false
+      })
+    } else {
+      this.setState({
+        showNotes: true
+      })
+    }
+  }
+
   render() {
     return (
       <div>
+        <div>
+          <span><button onClick={this.toggleTranscriptView.bind(this)} >Transcript</button></span>
+          <span><button onClick={this.toggleNotesView.bind(this)}>Notes</button></span>
+        </div>
+        <div>
+          { this.state.showTranscript ?  <Transcript /> : null}
+        </div>
+        <div>
+          { this.state.showNotes ?  <Notes /> : null}
+        </div>
         <div style={styles.graphContainer}>
           <h3>Mood Chart</h3>
           <LineChart data={this.state.mood}
