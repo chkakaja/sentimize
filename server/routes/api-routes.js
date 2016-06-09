@@ -6,7 +6,7 @@ module.exports = function(app) {
   // See auth-routes for POST to /api/users
   app.get('/api/users', UserController.getCurrentUser);
   app.put('/api/users', UserController.updateUser);
-  app.get('/api/users/getCalledUserInfo', UserController.getCalledUserInfo);
+  app.get('/api/users/getCalledUser', UserController.getCalledUser);
   app.post('/api/users/updatePeerId', UserController.updatePeerId);
 
   app.get('/api/session/interviewer',  SessionController.getInterviewerSessions);
@@ -14,6 +14,7 @@ module.exports = function(app) {
   app.post('/api/session', SessionController.createSession);
   app.post('/api/session/update', SessionController.updateSession);
   app.get('/api/session/calledGenerateSession',  SessionController.calledGenerateSession);
+  app.post('/transcript', SessionController.sessionTranscript);
 
   app.get('/api/snapshot', SnapshotController.getSnapshots);
   app.post('/api/snapshot', SnapshotController.createSnapshot);

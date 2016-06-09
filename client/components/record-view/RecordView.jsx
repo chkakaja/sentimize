@@ -131,7 +131,7 @@ export default class RecordView extends React.Component {
     this.setState({
       role: $('.record-role')[0].value
     }, function() {
-      this._getCalledUserInfo($('.record-called-user')[0].value, function() {
+      this._getCalledUser($('.record-called-user')[0].value, function() {
         var formData = {
           title: $('.record-title')[0].value,
           subject: $('.record-subject')[0].value,
@@ -192,10 +192,10 @@ export default class RecordView extends React.Component {
   }
 
 
-  _getCalledUserInfo(email, cb) {
+  _getCalledUser(email, cb) {
     $.ajax({
       type: 'GET',
-      url: '/api/users/getCalledUserInfo',
+      url: '/api/users/getCalledUser',
       data: { email: email },
       dataType: 'json',
       success: function(calledUser) {

@@ -35,3 +35,8 @@ video#webcam {
 li {
   text-align: left;
 }
+
+.chatbox{
+  overflow: break-word;
+  list-style-type:none
+}

@@ -40,7 +40,8 @@
     "react-chartjs": "^0.7.3",
     "react-dom": "^15.1.0",
     "react-router": "^2.4.1",
-    "react-webcam": "0.0.12"
+    "react-webcam": "0.0.12",
+    "socket.io": "^1.4.6"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",

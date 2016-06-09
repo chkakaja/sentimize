@@ -69,5 +69,15 @@ module.exports = {
       .catch(function(err) {
         console.error(err);
       });
+  },
+  
+  sessionTranscript: function(req, res){
+    new Session({
+      'id' : req.body.sender
+    }).save({
+      'transcript': req.body.transcript
+    }).then(function(session){
+      res.send(201)
+    })
   }
 }

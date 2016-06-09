@@ -42,7 +42,7 @@ exports.updateUser = function(req, res) {
   }
 };
 
-exports.getCalledUserInfo = function(req, res) {
+exports.getCalledUser = function(req, res) {
   User.where(req.query).fetch()
     .then(function(calledUser) {
       res.status(200).send(calledUser)

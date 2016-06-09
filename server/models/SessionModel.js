@@ -10,9 +10,11 @@ db.knex.schema.hasTable('sessions').then(function(exists) {
       session.integer('intervieweeId');
       session.string('title');
       session.string('description');
+      session.string('transcript');
       session.string('subject');
       session.string('date');
       session.string('duration');
+      session.string('notes');
       session.timestamps();
     }).then(function() {
       console.log('Session Table created');
